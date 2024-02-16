@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\navbars;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
+use View;
+use App\Models\Navbar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,9 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->isLocal()) {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
+
     }
 
     /**
@@ -25,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('*', function($view) {
+            $navbars = navbars::orderBy('ordering')->get();
+            $view->with('navbars', $navbars);
+        });
     }
+
 }
