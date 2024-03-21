@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/comment', function () {
+Route::get('/comment_layout', function () {
     return view('comment');
 });
