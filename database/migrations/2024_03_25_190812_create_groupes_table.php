@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('navbars', function (Blueprint $table) {
+        Schema::create('groupes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('route');
-            $table->integer('ordering')->default(0);
+            $table->string('Nom', 250);
+            $table->integer('Permission');
+            $table->string('Status', 250);
+            $table->integer('id_user')->unique();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('navbars');
+        Schema::dropIfExists('groupes');
     }
 };
