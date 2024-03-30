@@ -27,10 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('*', function($view) {
-            $navbars = navbars::orderBy('ordering')->get();
-            $view->with('navbars', $navbars);
-        });
+
     }
 
 }

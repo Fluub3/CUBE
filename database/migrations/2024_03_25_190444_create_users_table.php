@@ -23,11 +23,11 @@ return new class extends Migration
             $table->date('date_inscription')->nullable();
             $table->date('Date');
             $table->string('Status', 200);
-            $table->integer('Favoris');
-            $table->string('Id_Groupe', 200);
-            $table->integer('Id_Ressource');
-            $table->string('Id_commentaire', 200);
-            $table->string('Id_Reponse_Com', 200);
+            $table->integer('Favoris')->nullable();
+            $table->string('Id_Groupe', 200)->nullable();
+            $table->integer('Id_Ressource')->nullable();
+            $table->string('Id_commentaire', 200)->nullable();
+            $table->string('Id_Reponse_Com', 200)->nullable();
             $table->timestamps();
             $table->unique(['Favoris', 'Id_Groupe', 'Id_Ressource', 'Id_commentaire', 'Id_Reponse_Com'], 'User_AK');
         });

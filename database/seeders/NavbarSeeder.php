@@ -34,7 +34,7 @@ class NavbarSeeder extends Seeder
             ],
             [
                 'name' => 'À propos',
-                'route' => 'about.us',
+                'route' => 'aboutus',
                 'ordering' =>  4,
             ]
         ];

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Éditeur Personnalisé</title>
+    <!-- Ajoutez ici vos styles CSS -->
+    <style>
+        .editor-container {
+            width: 80%;
+            margin: auto;
+        }
+
+        .toolbar {
+            margin-bottom: 10px;
+        }
+
+        .editor-content {
+            width: 100%;
+            min-height: 200px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-y: auto;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<form id="editor-form" action="traitement.php" method="post">
+    <div class="editor-container">
+        <div class="toolbar">
+            <button id="btn-bold">Gras</button>
+            <button id="btn-italic">Italique</button>
+            <!-- Ajoutez d'autres boutons selon vos besoins -->
+        </div>
+        <div id="editor-content" contenteditable="true" class="editor-content"></div>
+    </div>
+    <button type="submit">Enregistrer</button>
+</form>
+
+<!-- Ajoutez ici vos scripts JavaScript -->
+<script>
+    document.getElementById('btn-bold').addEventListener('click', function() {
+        document.execCommand('bold');
+    });
+
+    document.getElementById('btn-italic').addEventListener('click', function() {
+        document.execCommand('italic');
+    });
+
+    document.getElementById('editor-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const editorContent = document.getElementById('editor-content');
+        const formattedContent = editorContent.innerHTML.replace(/<[^>]*>/g, function(match) {
+            if (match.includes('class="bold"')) {
+                return '<strong>';
+            } else if (match.includes('class="italic"')) {
+                return '<em>';
+            } else {
+                return match;
+            }
+        }).replace(/<\/div>/g, function(match) {
+            return '</strong></em></div>';
+        });
+        // Envoyez formattedContent à votre backend pour enregistrement en base de données
+        console.log(formattedContent);
+        // Vous pouvez ensuite soumettre le formulaire
+        // document.getElementById('editor-form').submit();
+    });
+</script>
+
+</body>
+</html>

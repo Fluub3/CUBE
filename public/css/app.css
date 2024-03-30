@@ -1,0 +1,26 @@
+.editor-container {
+    width: 80%;
+    margin: auto;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+}
+
+.editor-content {
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-y: auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
