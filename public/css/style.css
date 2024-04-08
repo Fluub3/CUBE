@@ -31,6 +31,7 @@ html, body {
 
 /* Form Container Styles */
 .content-container {
+  padding-top: 80px;
   width: 100%;
   max-width: 500px;
   margin: auto;
@@ -46,7 +47,7 @@ html, body {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin: 10px;
 }
 
 .form-group label {
@@ -195,7 +196,7 @@ html, body {
 
 .card-body {
   padding: 20px;
-  margin: 30px;
+  margin: 20px;
 }
 
 /* ... Styles pour responsive et autres éléments */
@@ -225,10 +226,10 @@ html, body {
 /* ... Plus de styles responsives au besoin */
 
 .footer {
-  width: calc(100% - 250px); /* ajuster en fonction de la largeur de la sidebar */
+  width: 100%; /* ajuster en fonction de la largeur de la sidebar */
   position: fixed;
   bottom: 0;
-  left: 250px; /* ajuster en fonction de la largeur de la sidebar */
+   /* ajuster en fonction de la largeur de la sidebar */
   background-color: #003366; /* La couleur de fond du footer */
   color: white; /* La couleur du texte dans le footer */
   text-align: center; /* Centre le texte dans le footer */
