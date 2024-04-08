@@ -7,9 +7,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
-        Service-Public.fr
-    </header>
+    @include('layout.header')
     
     <!-- Main content container -->
     <main class="content-container">
@@ -38,5 +36,6 @@
             </div>
         </form>
     </main>
+    @include('layout.footer')
 </body>
 </html>
