@@ -14,11 +14,11 @@ use App\Http\Controllers\LoginController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*
+
 Route::get('/', function () {
     return view('welcome');
 });
-*/
+
 Route::get('/test', function () {
     return view('jesaispas');
 });
@@ -39,6 +39,7 @@ Route::get('/getMail/{mail}', [LoginController::class, 'getMail']);
 Route::post('/postUser', [LoginController::class, 'postUser']);
 
 //Route::get('/getPassword/{pass}', [FrontController::class, 'getPassword']);
-
-
-
+  
+Route::get('/comment_layout', function () {
+    return view('comment');
+});
