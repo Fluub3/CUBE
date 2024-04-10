@@ -115,34 +115,19 @@ document.getElementById('btn-insert-list').addEventListener('click', function() 
 });
 
 
-
-/*
-document.getElementById('editor-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const editorContent = document.getElementById('editor-content');
-    const selection = window.getSelection();
-    const range = selection.getRangeAt(0);
-    let formattedContent = editorContent.innerHTML;
-
-    // Si la sélection contient un élément de tableau ou de liste
-    if (selection.anchorNode.parentNode.nodeName === 'TD' || selection.anchorNode.parentNode.nodeName === 'LI') {
-        const tag = selection.anchorNode.parentNode.nodeName.toLowerCase();
-        const startTag = '<' + tag + '>';
-        const endTag = '</' + tag + '>';
-        formattedContent = formattedContent.substring(0, range.startOffset) + startTag +
-                           formattedContent.substring(range.startOffset, range.endOffset) + endTag +
-                           formattedContent.substring(range.endOffset);
-    } else {
-        formattedContent = formattedContent.replace(range.toString(), function(match) {
-            if (selection.anchorNode.parentNode.nodeName === 'STRONG') {
-                return '<strong>' + match + '</strong>';
-            } else if (selection.anchorNode.parentNode.nodeName === 'EM') {
-                return '<em>' + match + '</em>';
-            } else {
-                return '<p>' + match + '</p>';
-            }
-        });
-    }
-    editorContent.innerHTML = formattedContent;
+    const formattedContent = editorContent.innerHTML.replace(/<[^>]*>/g, function(match) {
+        if (match.includes('class="bold"')) {
+            return '<strong>';
+        } else if (match.includes('class="italic"')) {
+            return '<em>';
+        } else {
+            return match;
+        }
+    }).replace(/<\/div>/g, function(match) {
+        return '</strong></em></div>';
+    });
+    // Envoyez formattedContent à votre backend pour enregistrement en base de données
+    console.log(formattedContent);
+    // Vous pouvez ensuite soumettre le formulaire
+    // document.getElementById('editor-form').submit();
 });
-;*/

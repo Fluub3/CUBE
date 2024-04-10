@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 /* Reset CSS */
 * {
     margin: 0;
@@ -13,8 +12,8 @@ body {
     background-color: #f2f2f2;
 }
 
-.container {
-    max-width: 1600px;
+
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -116,4 +115,3 @@ input[type="submit"]:hover {
     left: 0;
     visibility: hidden;
 }
->>>>>>> Stashed changes

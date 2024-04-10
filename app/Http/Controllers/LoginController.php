@@ -62,7 +62,7 @@ class LoginController extends Controller
             $utilisateur->date = $request->input('dob');
             $utilisateur->status = "actif";
             $utilisateur->Favoris = "0";
-
+          // save the user in the database
             $utilisateur->save();
         } else {
 
