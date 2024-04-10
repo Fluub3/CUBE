@@ -56,11 +56,12 @@ class LoginController extends Controller
             $utilisateur->prenom = $request->input('firstName');
             $utilisateur->mail = $request->input('email');
             $utilisateur->password = bcrypt($request->input('password'));
-            $utilisateur->rue = "tagrandemerde";
-            $utilisateur->cp = "34000";
+            $utilisateur->rue = $request->input('rue');
+            $utilisateur->cp = $request->input('cp');
+            $utilisateur->ville = $request->input('ville');
             $utilisateur->date = $request->input('dob');
             $utilisateur->status = "actif";
-            $utilisateur->Favoris = "34";
+            $utilisateur->Favoris = "0";
 
             $utilisateur->save();
         } else {
