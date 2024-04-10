@@ -1,3 +1,4 @@
+
 @extends('layout.nav_bar')
 
 @section('content')
@@ -13,4 +14,3 @@
             </div>
         </div>
     </div>
-@endsection

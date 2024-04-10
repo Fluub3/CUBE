@@ -42,4 +42,26 @@ Route::post('/postUser', [LoginController::class, 'postUser']);
   
 Route::get('/comment_layout', function () {
     return view('comment');
+
+Route::get('/test/route/helloword', function () {
+    return view('/layout/app');
 });
+
+Route::get('/Register', function () {
+    return view('/Register');
+});
+
+Route::view('/', 'home')->name('home');
+Route::view('/Ressources', 'Ressources')->name('Ressources');
+Route::view('/Favoris', 'Favoris')->name('Favoris');
+Route::view('/aboutus', 'aboutUs')->name('aboutus');
+
+Route::get('/getMail/{mail}', [LoginController::class, 'getMail']);
+Route::get('/checkLogin/{mail}', [LoginController::class, 'checkLogin']);
+
+Route::post('/postUser', [LoginController::class, 'postUser']);
+
+//Route::get('/getPassword/{pass}', [FrontController::class, 'getPassword']);
+
+});
+

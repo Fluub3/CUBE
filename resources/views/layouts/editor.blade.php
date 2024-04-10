@@ -25,8 +25,9 @@
                 <div class="color-picker-wrapper">
                     <button type="button" id="btn-highlight-color"><i class="fas fa-highlighter"></i> Surligner</button>
                     <input type="color" id="highlight-color-picker" title="Surligner le texte">
+                </div>
 
-                </div><label for="file-upload" id="btn-insert-image" class="image-upload-btn"><i class="fas fa-image"></i></label>
+                <label for="file-upload" id="btn-insert-image" class="image-upload-btn"><i class="fas fa-image"></i></label>
                 <input type="file" id="file-upload" accept="image/*" style="display: none;">
                 <button type="button" id="btn-video"><i class="fas fa-video"></i></button>
                 <!-- Ajoutez d'autres boutons selon vos besoins -->

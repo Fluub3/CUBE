@@ -92,10 +92,29 @@ function extractYouTubeVideoId(url) {
 document.getElementById('btn-video').addEventListener('click', addVideo);
 
 
-/*
-document.getElementById('editor-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const editorContent = document.getElementById('editor-content');
+
+// Fonction pour insérer un tableau
+document.getElementById('btn-insert-table').addEventListener('click', function() {
+    var tableHtml = '<table border="1"><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table>';
+    document.getElementById('editor-content').focus();
+    document.execCommand('insertHTML', false, tableHtml);
+});
+
+// Fonction pour insérer un spoiler
+document.getElementById('btn-insert-spoiler').addEventListener('click', function() {
+    var spoilerHtml = '<details><summary>Titre du spoiler</summary><p>Contenu du spoiler</p></details>';
+    document.getElementById('editor-content').focus();
+    document.execCommand('insertHTML', false, spoilerHtml);
+});
+
+// Fonction pour insérer une liste
+document.getElementById('btn-insert-list').addEventListener('click', function() {
+    var listHtml = '<ul><li>Élément 1</li><li>Élément 2</li><li>Élément 3</li></ul>';
+    document.getElementById('editor-content').focus();
+    document.execCommand('insertHTML', false, listHtml);
+});
+
+
     const formattedContent = editorContent.innerHTML.replace(/<[^>]*>/g, function(match) {
         if (match.includes('class="bold"')) {
             return '<strong>';
@@ -111,4 +130,4 @@ document.getElementById('editor-form').addEventListener('submit', function(event
     console.log(formattedContent);
     // Vous pouvez ensuite soumettre le formulaire
     // document.getElementById('editor-form').submit();
-});*/
+});
