@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\EditorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,14 +29,19 @@ Route::get('/editor', function () {
     return view('/layout/editor');
 });
 
+Route::get('/Register', function () {
+    return view('Register');
+});
 
-Route::post('/editor/save', 'EditorController@save')->name('editor.save');
+Route::get('/Connection', function () {
+    return view('Connection');
+});
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::post('/editor/save', [EditorController::class, 'save']);
 
 
-
-
-Route::view('/', 'home')->name('home');
-Route::view('/Ressources', 'Ressources')->name('Ressources');
-Route::view('/Favoris', 'Favoris')->name('Favoris');
-Route::view('/aboutus', 'aboutUs')->name('aboutus');
 
