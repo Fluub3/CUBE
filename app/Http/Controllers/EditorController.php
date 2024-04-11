@@ -36,7 +36,7 @@ class EditorController extends Controller
         $ress->save();
 
         echo "Succes";
-        //return view('/layout/editor');
+        return view('home');
 
     }
 }
