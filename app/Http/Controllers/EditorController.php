@@ -11,7 +11,14 @@ class EditorController extends Controller
     //
     public function index()
     {
-        //return view('editor');
+        $ressources = ressources::all(); // Récupère toutes les ressources de la base de données
+        return view('home', ['ressources' => $ressources]);
+    }
+
+    public function show($id)
+    {
+        $ressource = ressources::findOrFail($id);
+        return view('/ressources', ['ressource' => $ressource]);
     }
 
     public function save(Request $request)

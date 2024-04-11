@@ -2,12 +2,8 @@
 
 @section('title', 'Accueil') {{-- Ceci définit le titre de la page --}}
 
-@section('sidebar') {{-- Ceci remplit la section sidebar de votre layout --}}
-<!-- Ajoutez le contenu de la sidebar ici -->
-<div class="menu-item">Tableau de bord</div>
-<div class="menu-item">Mes favoris</div>
-<!-- Plus d'éléments du menu -->
-@endsection
+@extends('layout.sidebar')
+
 
 @section('content') {{-- Ceci remplit la section content de votre layout --}}
 @if(session('success'))
@@ -17,12 +13,19 @@
 @endif
 
 <!-- Ici, commence le contenu principal de votre page d'accueil -->
-<div class="card">
-    <div class="card-header">
-        Informations du compte ou autre contenu d'en-tête
-    </div>
-    <div class="card-body">
-        Contenu principal de la page d'accueil, tableau de bord et statistiques
+<div>
+
+    <div>
+        <!-- Affichage de l'aperçu de chaque ressource -->
+        @foreach($ressources as $ressource)
+            <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
+
+            <div class="card card-body">
+                <h3>{{ $ressource->Titre_ressource }}</h3> <!-- Affichez le titre de la ressource -->
+                <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p> <!-- Affichez un aperçu du contenu -->
+            </div>
+            </a>
+        @endforeach
     </div>
 </div>
 <!-- Plus de contenu principal -->

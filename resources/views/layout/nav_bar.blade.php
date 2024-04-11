@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
 </head>
 <body>
 @include('layout.header')

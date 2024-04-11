@@ -37,9 +37,14 @@ Route::get('/Connection', function () {
     return view('Connection');
 });
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home');
-})->name('home');
+})->name('home');*/
+
+Route::get('/', [EditorController::class, 'index']);
+Route::get('/ressources/{id}', [EditorController::class, 'show'])->name('ressource.show');
+
+
 
 Route::post('/editor/save', [EditorController::class, 'save']);
 
