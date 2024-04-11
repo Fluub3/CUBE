@@ -170,14 +170,14 @@ html, body {
     background-color: #333;
     color: #fff;
     width: 250px;
-    height: 100vh;
-    position: absolute; /* Modifiez ceci pour positionner la barre latérale par rapport à son conteneur */
-    left: 0;
-    top: 0;
     padding: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
     overflow-y: auto; /* Activer le défilement vertical */
-
 }
+
 
 
 .main-content {
