@@ -93,6 +93,7 @@ document.getElementById('btn-video').addEventListener('click', addVideo);
 
 
 
+
 // Fonction pour insérer un tableau
 document.getElementById('btn-insert-table').addEventListener('click', function() {
     var tableHtml = '<table border="1"><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table>';

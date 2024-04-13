@@ -16,12 +16,15 @@ return new class extends Migration
             $table->text('password');
             $table->string('nom', 100);
             $table->string('prenom', 100);
+            $table->string('password',250);
             $table->date('date_nais')->nullable();
-            $table->string('rue', 100);
-            $table->string('cp', 5);
+            $table->string('rue', 100)->nullable();
+            $table->string('cp', 5)->nullable();
             $table->string('ville', 200)->nullable();
             $table->string('mail', 200)->nullable();
             $table->date('date_inscription')->nullable();
+            $table->date('Date');
+            $table->string('Status', 200);
             $table->date('date');
             $table->string('Status', 200)->nullable();
             $table->integer('Favoris')->nullable();

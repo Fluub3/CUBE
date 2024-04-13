@@ -18,13 +18,12 @@ return new class extends Migration
             $table->integer('Nb_vue');
             $table->date('Date');
             $table->string('Status', 250);
-            $table->integer('id_user');
-            $table->integer('id_commentaire');
-            $table->integer('id_permission_ressource');
-            $table->integer('id_Permission_Ressource_Permettre');
-            $table->integer('id_User_Creer');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_commentaire')->nullable();
+            $table->integer('id_permission_ressource')->nullable();
+            $table->integer('id_Permission_Ressource_Permettre')->nullable();
+            $table->integer('id_User_Creer')->nullable();
             $table->timestamps();
-            $table->unique(['id_user', 'id_commentaire', 'id_permission_ressource'], 'Ressource_AK');
         });
 
 
