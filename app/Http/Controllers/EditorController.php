@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\users;
 use Illuminate\Http\Request;
 use App\Models\ressources as ressources;
 use Illuminate\Support\Facades\Auth;
@@ -66,6 +67,54 @@ class EditorController extends Controller
 
         return redirect()->route('ressource.show', ['id' => $id])->with('success', 'Ressource mise à jour avec succès');
     }
+
+    public function addToFavorites(Request $request)
+    {
+        $userId = auth()->id();
+        $ressourceId = $request->ressource_id;
+
+        // Vérifier si la ressource est déjà dans les favoris de l'utilisateur
+        $user = users::findOrFail($userId);
+        $isFavorite = $user->favoris()->where('id_Ressource', $ressourceId)->exists();
+
+        // Affiche la valeur de $isFavorite pour le débogage
+        //dd($isFavorite);
+
+        if ($isFavorite) {
+            // Si la ressource est déjà dans les favoris, la retirer
+            auth()->user()->favoris()->detach($ressourceId);
+            //$user->favoris()->detach($ressourceId);
+            return response()->json(['message' => 'Ressource retirée des favoris avec succès']);
+        } else {
+            // Si la ressource n'est pas dans les favoris, l'ajouter
+            auth()->user()->favoris()->attach($ressourceId);
+            //$user->favoris()->attach($ressourceId);
+            return response()->json(['message' => 'Ressource ajoutée aux favoris avec succès']);
+        }
+    }
+
+
+    public function checkFavorite($id)
+    {
+        // Récupérer l'utilisateur actuellement authentifié
+        $user = Auth::user();
+
+        // Vérifier si la ressource est dans les favoris de l'utilisateur
+        $isFavorite = $user->favoris->contains($id);
+
+        // Retourner la réponse JSON
+        return response()->json(['isFavorite' => $isFavorite]);
+    }
+
+
+
+
+
+
+
+
+
+
 
     public function destroy($id)
     {

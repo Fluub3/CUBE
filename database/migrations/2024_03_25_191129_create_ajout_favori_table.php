@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id(); // Utilisation de la méthode id() pour créer une clé primaire auto-incrémentée
             $table->bigInteger('id_User')->unsigned();
             $table->bigInteger('id_Ressource')->unsigned();
-            $table->foreign('id_Ressource')->references('id')->on('ressources');
-            $table->foreign('id_User')->references('id')->on('users');
+            $table->foreign('id_Ressource')->references('id')->on('ressources')->onDelete('cascade');
+            $table->foreign('id_User')->references('id')->on('users')->onDelete('cascade');
         });
 
 

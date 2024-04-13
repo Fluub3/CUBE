@@ -2,8 +2,8 @@
 <html>
  <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="./css/globals.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+     <link rel="stylesheet" href="{{ asset('css/globals.css') }}" />
+     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
  </head>
  <body>
     <div class="page-d-inscription">

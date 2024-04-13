@@ -17,7 +17,7 @@
 
     <div>
         <!-- Affichage de l'aperçu de chaque ressource -->
-        @forelse($ressources as $ressource)
+        @forelse($ressources as $ressource) <!-- Si $ressources != empty alors tu affiche -->
             <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
 
                 <div class="card card-body">

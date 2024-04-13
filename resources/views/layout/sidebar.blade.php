@@ -4,7 +4,7 @@
 
 <!-- Afficher le lien "Ajouter une ressource" seulement si l'utilisateur est connecté -->
 @auth
-    <div class="menu-item">Mes favoris</div>
+    <div class="menu-item"><a href="{{ route('favoris') }}" class="menuA">Mes favoris</a></div>
     <div class="menu-item"><a href="{{ route('editor') }}" class="menuA">Ajouter une ressource</a></div>
     <!-- Afficher le bouton "Déconnexion" si l'utilisateur est connecté -->
     <div class="menu-item"><a href="{{ route('logout') }}" class="menuA" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></div>
