@@ -7,7 +7,17 @@
     <!-- Inclusion de votre feuille de style CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Inclure une bibliothèque d'icônes, par exemple Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tiny.cloud/1/cew72ljbtjkjbxfg29sq6tl3vzqbudslv5nwyme2ixdom1co/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists link image media',
+            toolbar: 'undo redo | bold italic underline | forecolor backcolor | bullist numlist | link image media',
+            menubar: false,
+            width: '100%',
+            height: 300,
+        });
+    </script>
 </head>
 <body>
 <div class="container">
@@ -20,42 +30,16 @@
                 <input type="text" name="title" id="title" placeholder="Entrez le titre ici" required>
             </div>
 
-            <div class="toolbar">
-                <!-- Boutons de mise en forme -->
-                <button type="button" id="btn-bold"><i class="fas fa-bold"></i></button>
-                <button type="button" id="btn-italic"><i class="fas fa-italic"></i></button>
-                <button type="button" id="btn-underline"><i class="fas fa-underline"></i></button>
-                <!-- Sélecteur de couleur de texte -->
-                <div class="color-picker-wrapper">
-                    <button type="button" id="btn-text-color"><i class="fas fa-font"></i> Couleur</button>
-                    <input type="color" id="text-color-picker" title="Couleur du texte">
-                </div>
-                <!-- Sélecteur de couleur de surlignage -->
-                <div class="color-picker-wrapper">
-                    <button type="button" id="btn-highlight-color"><i class="fas fa-highlighter"></i> Surligner</button>
-                    <input type="color" id="highlight-color-picker" title="Surligner le texte">
-                </div>
-                <!-- Bouton pour insérer une image -->
-                <label for="file-upload" id="btn-insert-image" class="image-upload-btn"><i class="fas fa-image"></i></label>
-                <input type="file" id="file-upload" accept="image/*" style="display: none;">
-                <!-- Bouton pour insérer une vidéo -->
-                <button type="button" id="btn-video"><i class="fas fa-video"></i></button>
-                <!-- Ajoutez d'autres boutons selon vos besoins -->
-            </div>
             <!-- Zone d'édition du contenu -->
-            <div id="editor-content" contenteditable="true" class="editor-content"></div>
+            <textarea id="contenu" name="contenue" class="form-control" rows="5"></textarea>
         </div>
         <!-- Bouton pour soumettre le formulaire -->
-        <button type="button" id="btn-Submit"><i class="fas fa-upload"></i></button>
-        <input type="text" name="editorContentInput" id="editorContentInput" hidden="hidden">
         <!-- Le vrai bouton de soumission qui sera caché -->
-        <input type="submit" id="Envoyer" hidden="hidden">
+        <input type="submit" id="Envoyer" >
     </form>
 
 </div>
 
 <!-- Inclusion de votre script JavaScript -->
-<script src="{{ asset('js/app.js') }}"></script>
-
 </body>
 </html>

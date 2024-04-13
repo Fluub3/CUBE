@@ -11,14 +11,25 @@
 
 <!-- Main content container -->
 <main class="content-container">
+    <!-- Affichage des erreurs de validation -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <!-- Login form -->
-    <form id="loginForm" class="form" action="{{ route('login.post') }} " method="post">
+    <form id="loginForm" class="form" action="{{ route('checkLogin') }}" method="post">
         <!-- CSRF Token for security -->
         @csrf
 
         <div class="form-group">
             <label for="emailLogin">Votre email</label>
-            <input type="email" id="emailLogin" name="email" required>
+            <input type="email" id="emailLogin" name="mail" required>
         </div>
 
         <div class="form-group">

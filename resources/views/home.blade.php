@@ -17,16 +17,20 @@
 
     <div>
         <!-- Affichage de l'aperçu de chaque ressource -->
-        @foreach($ressources as $ressource)
+        @forelse($ressources as $ressource)
             <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
 
-            <div class="card card-body">
-                <h3>{{ $ressource->Titre_ressource }}</h3> <!-- Affichez le titre de la ressource -->
-                <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p> <!-- Affichez un aperçu du contenu -->
-            </div>
+                <div class="card card-body">
+                    <h3>{{ $ressource->Titre_ressource }}</h3> <!-- Affichez le titre de la ressource -->
+                    <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p> <!-- Affichez un aperçu du contenu -->
+                </div>
             </a>
-        @endforeach
+        @empty
+            <!-- Aucune ressource trouvée -->
+            <p>Aucune ressource disponible pour le moment.</p>
+        @endforelse
     </div>
 </div>
+
 <!-- Plus de contenu principal -->
 @endsection
