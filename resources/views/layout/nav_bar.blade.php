@@ -12,7 +12,49 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
+
+    <script>
+        // Fonction pour ajouter une ressource aux favoris
+        function addToFavorites(ressourceId) {
+            $.ajax({
+                url: '{{ route("addtofavorites") }}',
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    ressource_id: ressourceId
+                },
+                success: function(response) {
+                    if($('#favoriteButton').hasClass('active')){
+                        $('#favoriteButton').removeClass('active');
+                    }else {
+                        $('#favoriteButton').addClass('active');
+                    }
+
+                    alert(response.message);
+                },
+                error: function(xhr) {
+                    alert('Une erreur s\'est produite lors de l\'ajout aux favoris');
+                }
+            });
+        }
+
+
+
+            function toggleReplyForm(commentaireId) {
+            var replyForm = document.getElementById('replyForm' + commentaireId);
+            if (replyForm.style.display === 'none') {
+            replyForm.style.display = 'block';
+        } else {
+            replyForm.style.display = 'none';
+        }
+        }
+
+
+    </script>
 
 </head>
 <body>

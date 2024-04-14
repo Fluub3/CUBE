@@ -22,7 +22,7 @@
     @endif
 
     <!-- Login form -->
-    <form id="loginForm" class="form" action="{{ route('checkLogin') }}" method="post">
+    <form id="loginForm" class="form" action="{{ route('Forgotpassword') }}" method="post">
         <!-- CSRF Token for security -->
         @csrf
 
@@ -32,16 +32,21 @@
         </div>
 
         <div class="form-group">
-            <label for="passwordLogin">Votre mot de passe</label>
+            <label for="passwordLogin">Votre nouveau mot de passe</label>
             <input type="password" id="passwordLogin" name="password" required>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="submit-button">Se connecter</button>
+            <label for="passwordLogin">Confirmation du nouveau mot de passe</label>
+            <input type="password" id="passwordLogin" name="passwordConfirm" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="submit-button">Changer son mot de passe</button>
         </div>
 
         <div class="form-links">
-            <a href="/forgot-password">Mot de passe oublié ?</a>
+            <a href="/Connection">Se connecter</a>
             <a href="/Register">Créer un compte</a>
         </div>
     </form>

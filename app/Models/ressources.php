@@ -20,4 +20,14 @@ class ressources extends Model
         'id_Permission_Ressource_Permettre',
         'id_User_Creer',
     ];
+
+    public function utilisateurs()
+    {
+        return $this->belongsToMany(User::class, 'ajout_favori', 'id_Ressource', 'id_User');
+    }
+    public function commentaires()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

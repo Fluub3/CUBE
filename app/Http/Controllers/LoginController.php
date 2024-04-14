@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ressources as ressources;
 use Illuminate\Http\Request;
 use App\Models\users as dbusers;
 use Illuminate\Support\Facades\Auth;
@@ -33,9 +34,9 @@ class LoginController extends Controller
             // L'utilisateur est authentifié, rediriger vers la page d'accueil
             return redirect()->route('home');
         } else {
-            print_r($credentials);
+            //print_r($credentials);
             // L'authentification a échoué, rediriger vers la page de connexion avec un message d'erreur
-            //return redirect()->route('connection')->with('error', 'Identifiants invalides');
+            return redirect()->route('connection')->with('error', 'Identifiants invalides');
         }
     }
 
@@ -95,6 +96,45 @@ class LoginController extends Controller
             return view('/Register');
         }
     }
+
+
+    public function Forgotpassword(Request $request){
+
+
+        $mail = dbusers::where('mail', $request->mail)->first();
+
+        $temppass1 = $request->input('password');
+        $temppass2 = $request->input('passwordConfirm');
+
+        if ($temppass1 == $temppass2) {
+
+            $mail->password = bcrypt($temppass1);
+            $mail->save();
+            return redirect()->route('connection')->with('error', 'Mot de passe modifier');
+
+
+        }else{
+            return redirect()->route('forgot-password')->with('error', 'Mots de passe non identiques');
+
+        }
+
+
+    }
+
+
+    public function favoris()
+    {
+        // Récupérer l'utilisateur authentifié
+        $user = auth()->user();
+
+        // Récupérer les favoris de l'utilisateur
+        $favoris = $user->favoris()->get();
+
+        return view('Favoris', ['favoris' => $favoris]);
+    }
+
+
+
 
     public function logout()
     {
