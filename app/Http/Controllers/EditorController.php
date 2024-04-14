@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\users;
 use Illuminate\Http\Request;
 use App\Models\ressources as ressources;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,11 +21,17 @@ class EditorController extends Controller
     }
 
 
+
     public function show($id)
     {
         $ressource = ressources::findOrFail($id);
-        return view('/ressources', ['ressource' => $ressource]);
+        // Charger les commentaires avec les utilisateurs associés
+        $commentaires = Comment::with('user')->where('ressources_id', $id)->get();
+
+        return view('ressources', compact('ressource', 'commentaires'));
     }
+
+
 
     public function save(Request $request)
     {

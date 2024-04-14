@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('commentaires', function (Blueprint $table) {
             $table->id();
             $table->text('Contenue');
-            $table->unsignedBigInteger('id_ressource');
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('ressources_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_User_Commenter');
             $table->unsignedBigInteger('ID_Ressource_Afficher');
             $table->timestamps();
-            $table->unique(['id_ressource', 'id_user'], 'Commentaire_AK');
         });
 
         Schema::table('commentaires', function (Blueprint $table) {

@@ -25,4 +25,9 @@ class ressources extends Model
     {
         return $this->belongsToMany(User::class, 'ajout_favori', 'id_Ressource', 'id_User');
     }
+    public function commentaires()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

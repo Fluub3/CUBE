@@ -19,7 +19,6 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Commentaire_Afficher');
             $table->unsignedBigInteger('id_User_Appartenir');
             $table->timestamps();
-            $table->unique(['id_user', 'id_commentaire'], 'Reponse_commentaire_AK');
         });
 
         Schema::table('reponse_commentaires', function (Blueprint $table) {

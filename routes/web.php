@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EditorController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReponseCommentaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +61,8 @@ Route::post('/checkLogin', [LoginController::class, 'checkLogin'])->name('checkL
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/Forgotpassword', [LoginController::class, 'Forgotpassword'])->name('Forgotpassword');
 Route::post('/add-to-favorites', [EditorController::class, 'addToFavorites'])->name('addtofavorites');
+Route::post('/ressources/{ressource_id}/commentaire', [CommentController::class, 'store'])->name('comment.store');
+Route::post('/reponse_commentaires', [ReponseCommentaireController::class, 'store'])->name('reponse_commentaire.store');
 
 /**
  * Requette GET
@@ -68,14 +72,19 @@ Route::post('/add-to-favorites', [EditorController::class, 'addToFavorites'])->n
 Route::get('/ressources/{id}/edit', [EditorController::class, 'edit'])->name('ressource.edit');
 Route::get('/getMail/{mail}', [LoginController::class, 'getMail'])->name('getMail');
 Route::get('/check-favorite/{id}', [EditorController::class, 'checkFavorite'])->name('check.favorite');
+Route::get('/commentaires/{id}/edit', [CommentController::class, 'edit'])->name('commentaire.edit');
+
 
 /**
  * Requette PUT
  */
 Route::put('/ressources/{id}', [EditorController::class, 'update'])->name('ressource.update');
+Route::put('/commentaires/{id}', [CommentController::class, 'update'])->name('commentaire.update');
+
 /**
  * Requette DELETE
  */
 Route::delete('/ressources/{id}', [EditorController::class, 'destroy'])->name('ressource.destroy');
+Route::delete('/commentaires/{id}', [CommentController::class, 'destroy'])->name('commentaire.destroy');
 
 

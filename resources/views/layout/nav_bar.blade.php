@@ -42,6 +42,18 @@
             });
         }
 
+
+
+            function toggleReplyForm(commentaireId) {
+            var replyForm = document.getElementById('replyForm' + commentaireId);
+            if (replyForm.style.display === 'none') {
+            replyForm.style.display = 'block';
+        } else {
+            replyForm.style.display = 'none';
+        }
+        }
+
+
     </script>
 
 </head>
