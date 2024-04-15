@@ -17,18 +17,39 @@
 
     <div>
         <!-- Affichage de l'aperçu de chaque ressource -->
-        @forelse($ressources as $ressource) <!-- Si $ressources != empty alors tu affiche -->
-            <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
-
-                <div class="card card-body">
-                    <h3>{{ $ressource->Titre_ressource }}</h3> <!-- Affichez le titre de la ressource -->
-                    <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p> <!-- Affichez un aperçu du contenu -->
-                </div>
-            </a>
+        @forelse($ressources as $ressource)
+            @if($ressource->permission_ressource == 0 && !Auth::check())
+                <!-- Pour les ressources publiques et les utilisateurs non connectés -->
+                <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
+                    <div class="card card-body">
+                        <h3>{{ $ressource->Titre_ressource }}</h3>
+                        <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p>
+                    </div>
+                </a>
+            @elseif(Auth::check() && ($ressource->permission_ressource == 0 || $ressource->permission_ressource == 1))
+                <!-- Pour les ressources publiques ou privées et les utilisateurs connectés -->
+                <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
+                    <div class="card card-body">
+                        <h3>{{ $ressource->Titre_ressource }}</h3>
+                        <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p>
+                    </div>
+                </a>
+            @elseif(Auth::check() && $ressource->permission_ressource == 2 && $ressource->id_user == Auth::id())
+                <!-- Pour les ressources non répertoriées et l'utilisateur connecté qui les a créées -->
+                <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
+                    <div class="card card-body">
+                        <h3>{{ $ressource->Titre_ressource }}</h3>
+                        <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p>
+                    </div>
+                </a>
+            @endif
         @empty
             <!-- Aucune ressource trouvée -->
             <p>Aucune ressource disponible pour le moment.</p>
         @endforelse
+
+
+
     </div>
 </div>
 

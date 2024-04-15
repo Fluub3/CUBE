@@ -68,6 +68,7 @@ Route::post('/Forgotpassword', [LoginController::class, 'Forgotpassword'])->name
 Route::post('/add-to-favorites', [EditorController::class, 'addToFavorites'])->name('addtofavorites');
 Route::post('/ressources/{ressource_id}/commentaire', [CommentController::class, 'store'])->name('comment.store');
 Route::post('/reponse_commentaires', [ReponseCommentaireController::class, 'store'])->name('reponse_commentaire.store');
+Route::post('/ressource/{id}/generate-link', [EditorController::class, 'generateLink'])->name('generate.link');
 
 /**
  * Requette GET

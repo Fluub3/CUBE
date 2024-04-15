@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\ressources as ressources;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 
 
 
@@ -57,7 +59,7 @@ class EditorController extends Controller
         $ress->Nb_vue = 0;
         $ress->Status = 'Actif';
         $ress->id_commentaire = 0;
-        $ress->id_permission_ressource = 0;
+        $ress->permission_ressource = $request->input('visibility');;
         $ress->id_Permission_Ressource_Permettre = 0;
         $ress->id_User_Creer = $user->id; // Utiliser l'ID de l'utilisateur actuel
 
@@ -121,7 +123,22 @@ class EditorController extends Controller
         return response()->json(['isFavorite' => $isFavorite]);
     }
 
+    public function generateLink($id)
+    {
+        // Trouver la ressource
+        $ressource = ressources::findOrFail($id);
 
+        // Vérifier si l'utilisateur est le créateur de la ressource
+            // Générer le lien avec un token unique
+            $token = Str::random(20);
+            $link = route('ressource.show', ['id' => $id, 'token' => $token]);
+
+            // Enregistrer le lien dans la base de données ou effectuer d'autres actions nécessaires
+
+            // Rediriger l'utilisateur vers le lien généré
+            return $link;
+
+    }
 
 
 

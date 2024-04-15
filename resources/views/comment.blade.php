@@ -1,4 +1,5 @@
-@extends('layouts.comment_layout')
+@extends('layout.comment_layout')
+
 
 @section('comment')
 
