@@ -15,6 +15,15 @@
                                     <i class="far fa-star"></i>
                                 </button>
                                 @if($ressource->id_user == Auth::user()->id)
+                                    @if($ressource->permission_ressource == 2)
+                                        <div class="card-footer">
+                                            <!-- Bouton pour générer le lien vers la ressource -->
+                                            <button type="button" class="btn btn-outline-primary" id="generateLinkBtn">Générer un lien</button>
+                                        </div>
+                                    @endif
+
+
+
                                     <a href="{{ route('ressource.edit', ['id' => $ressource->id]) }}"
                                        class="btn btn-outline-secondary">Modifier</a>
                                     <form action="{{ route('ressource.destroy', ['id' => $ressource->id]) }}"
@@ -157,6 +166,42 @@
                     console.error('Erreur lors de la vérification des favoris.');
                 }
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('generateLinkBtn').addEventListener('click', function () {
+                // Envoyer une requête AJAX pour générer le lien
+                $.ajax({
+                    url: "{{ route('generate.link', ['id' => $ressource->id]) }}",
+                    type: "POST",
+                    data: {_token: "{{ csrf_token() }}"},
+                    success: function (response) {
+
+                        //console.log(response);
+                        // Copier le lien généré dans le presse-papiers
+                        copyToClipboard(response);
+                    },
+                    error: function (xhr, status, error) {
+                        // Gérer les erreurs ici
+                        console.error(error);
+                    }
+                });
+            });
+
+            // Fonction pour copier le texte dans le presse-papiers
+            function copyToClipboard(text) {
+                var textarea = document.createElement("textarea");
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+
+                // Afficher une alerte ou un message pour informer l'utilisateur que le lien a été copié
+                alert('Le lien a été copié dans le presse-papiers : ' + text);
+            }
         });
     </script>
 @endsection
