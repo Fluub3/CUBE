@@ -20,7 +20,7 @@ use App\Http\Controllers\ReponseCommentaireController;
 
 
 /**
- * Requette redirection de page
+ * Requete redirection de page
  */
 
 Route::get('/', [EditorController::class, 'index'])->name('home');
@@ -58,8 +58,12 @@ Route::get('/forgot-password', function () {
     return view('forgot-password');
 })->name('forgot-password');
 
+Route::get('/Admin', function () {
+    return view('Administrator');
+})->name('Admin');
+
 /**
- * Requette POST
+ * Requete POST
  */
 Route::post('/postUser', [LoginController::class, 'postUser'])->name('postUser');
 Route::post('/checkLogin', [LoginController::class, 'checkLogin'])->name('checkLogin');
@@ -69,9 +73,10 @@ Route::post('/add-to-favorites', [EditorController::class, 'addToFavorites'])->n
 Route::post('/ressources/{ressource_id}/commentaire', [CommentController::class, 'store'])->name('comment.store');
 Route::post('/reponse_commentaires', [ReponseCommentaireController::class, 'store'])->name('reponse_commentaire.store');
 Route::post('/ressource/{id}/generate-link', [EditorController::class, 'generateLink'])->name('generate.link');
+Route::post('/AdminChange', [LoginController::class, 'updateUserPerm'])->name('AdminChange');
 
 /**
- * Requette GET
+ * Requete GET
  */
 
 
@@ -79,16 +84,17 @@ Route::get('/ressources/{id}/edit', [EditorController::class, 'edit'])->name('re
 Route::get('/getMail/{mail}', [LoginController::class, 'getMail'])->name('getMail');
 Route::get('/check-favorite/{id}', [EditorController::class, 'checkFavorite'])->name('check.favorite');
 Route::get('/commentaires/{id}/edit', [CommentController::class, 'edit'])->name('commentaire.edit');
+Route::get('/getUsers', [LoginController::class, 'getUsers'])->name('Administrateur');
 
 
 /**
- * Requette PUT
+ * Requete PUT
  */
 Route::put('/ressources/{id}', [EditorController::class, 'update'])->name('ressource.update');
 Route::put('/commentaires/{id}', [CommentController::class, 'update'])->name('commentaire.update');
 
 /**
- * Requette DELETE
+ * Requete DELETE
  */
 Route::delete('/ressources/{id}', [EditorController::class, 'destroy'])->name('ressource.destroy');
 Route::delete('/commentaires/{id}', [CommentController::class, 'destroy'])->name('commentaire.destroy');

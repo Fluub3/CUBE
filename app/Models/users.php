@@ -29,7 +29,7 @@ class users extends Model
         'date',
         'Status',
         'Favoris',
-        'Id_Groupe',
+        'Permission',
         'Id_Ressource',
         'Id_commentaire',
         'Id_Reponse_Com'

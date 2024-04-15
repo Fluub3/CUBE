@@ -8,6 +8,13 @@
  <body>
     <div class="page-d-inscription">
     <div class="div">
+        @if (session('error'))
+            <div class="alert alert-error">
+                <ul>
+                    {{ session('error') }}
+                </ul>
+            </div>
+        @endif
             <form id="registrationForm" method = "post" action = "/postUser">
                 @csrf
                 <div class="nom">

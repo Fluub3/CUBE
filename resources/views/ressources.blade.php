@@ -14,7 +14,7 @@
                                         onclick="addToFavorites({{ $ressource->id }})">
                                     <i class="far fa-star"></i>
                                 </button>
-                                @if($ressource->id_user == Auth::user()->id)
+                                @if($ressource->id_user == Auth::user()->id || Auth::user()->Permission == 2 || Auth::user()->Permission == 1)
                                     @if($ressource->permission_ressource == 2)
                                         <div class="card-footer">
                                             <!-- Bouton pour générer le lien vers la ressource -->
@@ -71,7 +71,7 @@
 
 
                                 <!-- Vérifie si l'utilisateur actuel est l'auteur du commentaire -->
-                                @if(Auth::check() && $commentaire->user_id === Auth::id())
+                                @if(Auth::check() && ($commentaire->user_id === Auth::id()))
                                     <!-- Formulaire de modification -->
                                     <form action="{{ route('commentaire.update', $commentaire->id) }}" method="POST"
                                           style="display: inline;">
@@ -91,7 +91,9 @@
                                             Supprimer
                                         </button>
                                     </form>
-                                @else
+                                    @else
+
+
 
                                     <!-- Afficher le contenu du commentaire -->
                                     {{ $commentaire->Contenue }}
@@ -111,6 +113,17 @@
                                                 <button type="submit">Répondre</button>
                                             </form>
                                         </div>
+                                            @if(Auth::user()->Permission == 2 && Auth::check())
+                                                <form action="{{ route('commentaire.destroy', $commentaire->id) }}" method="POST"
+                                                      style="display: inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')">
+                                                        Supprimer
+                                                    </button>
+                                                </form>
+                                            @endif
                                     @endif
                                 @endif
 

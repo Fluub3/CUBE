@@ -26,7 +26,7 @@
                         <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p>
                     </div>
                 </a>
-            @elseif(Auth::check() && ($ressource->permission_ressource == 0 || $ressource->permission_ressource == 1))
+            @elseif(Auth::check() && (($ressource->permission_ressource == 0 || $ressource->permission_ressource == 1) ||Auth::user()->Permission == 2||Auth::user()->Permission == 1))
                 <!-- Pour les ressources publiques ou privées et les utilisateurs connectés -->
                 <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
                     <div class="card card-body">
@@ -34,7 +34,7 @@
                         <p>{!! substr($ressource->Contenue, 0, 100) !!}... </p>
                     </div>
                 </a>
-            @elseif(Auth::check() && $ressource->permission_ressource == 2 && $ressource->id_user == Auth::id())
+            @elseif(Auth::check() && (($ressource->permission_ressource == 2 && $ressource->id_user == Auth::id()) || Auth::user()->Permission == 2 || Auth::user()->Permission == 1))
                 <!-- Pour les ressources non répertoriées et l'utilisateur connecté qui les a créées -->
                 <a href="{{ route('ressource.show', ['id' => $ressource->id]) }}" class="card ressource-preview">
                     <div class="card card-body">

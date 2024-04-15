@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReponseCommentaire;
 use Illuminate\Http\Request;
 use App\Models\Comment; // Assurez-vous d'importer le modèle de commentaire si ce n'est pas déjà fait
 
@@ -42,10 +43,15 @@ class CommentController extends Controller
     {
         $commentaire = Comment::findOrFail($id);
         // Vérifie si l'utilisateur actuel est l'auteur du commentaire
-        if ($commentaire->user_id !== auth()->id()) {
-            // Redirigez l'utilisateur avec un message d'erreur ou affichez une vue d'erreur
-            return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à supprimer ce commentaire.');
+
+        // Récupérer les réponses associées à ce commentaire
+        $reponses = ReponseCommentaire::where('id_commentaire', $id)->get();
+
+        // Supprimer chaque réponse associée
+        foreach ($reponses as $reponse) {
+            $reponse->delete();
         }
+
         $commentaire->delete();
         return redirect()->back()->with('success', 'Commentaire supprimé avec succès !');
     }
