@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->text('password');
             $table->string('nom', 100);
             $table->string('prenom', 100);
             $table->string('password',250);
@@ -24,6 +25,8 @@ return new class extends Migration
             $table->date('date_inscription')->nullable();
             $table->date('Date');
             $table->string('Status', 200);
+            $table->date('date');
+            $table->string('Status', 200)->nullable();
             $table->integer('Favoris')->nullable();
             $table->string('Id_Groupe', 200)->nullable();
             $table->integer('Id_Ressource')->nullable();

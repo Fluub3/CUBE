@@ -50,7 +50,5 @@
 
 
 </div>
-
-<!-- Inclusion de votre script JavaScript -->
 </body>
 </html>
