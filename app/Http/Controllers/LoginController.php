@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ressources as ressources;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\users as dbusers;
 use Illuminate\Support\Facades\Auth;
@@ -25,16 +26,15 @@ class LoginController extends Controller
 
     public function checkLogin(Request $request)
     {
-        // Récupérer les identifiants de connexion depuis la requête
+        // Get the credential from the request
         $credentials = $request->only('mail', 'password');
 
-        // Authentifier l'utilisateur avec les identifiants fournis
+        // Authenticate the users with the given credential
         if (Auth::attempt($credentials)) {
-            // L'utilisateur est authentifié, rediriger vers la page d'accueil
+            // User is authentifed, redirection to the home page
             return redirect()->route('home');
         } else {
-            //print_r($credentials);
-            // L'authentification a échoué, rediriger vers la page de connexion avec un message d'erreur
+            // Authentification failed, return to the connexion page with the error
             return redirect()->route('connection')->with('error', 'Identifiants invalides');
         }
     }
@@ -59,13 +59,13 @@ class LoginController extends Controller
             $utilisateur->date = $request->input('dob');
             $utilisateur->status = "actif";
             $utilisateur->Favoris = "0";
+            $utilisateur->Permission = "0";
             // save the user in the database
             $utilisateur->save();
             return redirect()->route('home');
         } else {
-
-            // NEED TO ADD A ERROR MESSAGE
-            return view('/Register');
+            // Show a notification error if there is some problem with the values
+            return view('/Register')->with('error', 'Veuillez remplir tout les champs du formulaire');
         }
     }
 
@@ -105,7 +105,20 @@ class LoginController extends Controller
         return view('Favoris', ['favoris' => $favoris]);
     }
 
+    public function updateUserPerm(Request $request){
+        $user = dbusers::findOrFail($request->input('user'));
+        $user->Permission = $request->input('permission');
+        $user->save();
 
+        echo "oui";
+        return redirect()->route('Administrateur');
+    }
+
+    public function getUsers()
+    {
+        $users = User::all();
+        return view('Administrator', ['users' => $users]);
+    }
 
 
     public function logout()

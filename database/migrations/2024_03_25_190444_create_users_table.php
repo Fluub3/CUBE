@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('Date');
             $table->string('Status', 200);
             $table->integer('Favoris')->nullable();
-            $table->string('Id_Groupe', 200)->nullable();
+            $table->string('Permission', 200)->nullable();
             $table->integer('Id_Ressource')->nullable();
             $table->string('Id_commentaire', 200)->nullable();
             $table->string('Id_Reponse_Com', 200)->nullable();

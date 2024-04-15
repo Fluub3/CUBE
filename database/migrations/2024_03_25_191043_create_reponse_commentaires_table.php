@@ -19,7 +19,13 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Commentaire_Afficher');
             $table->unsignedBigInteger('id_User_Appartenir');
             $table->timestamps();
+
+            $table->foreign('id_commentaire')
+                ->references('id')
+                ->on('commentaires')
+                ->onDelete('cascade');
         });
+
 
         Schema::table('reponse_commentaires', function (Blueprint $table) {
             $table->foreign('Id_Commentaire_Afficher')->references('id')->on('commentaires');
