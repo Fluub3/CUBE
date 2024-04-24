@@ -69,9 +69,9 @@ class LoginController extends Controller
             $utilisateur->rue = $request->input('rue');
             $utilisateur->cp = $request->input('cp');
             $utilisateur->ville = $request->input('ville');
-            $utilisateur->date = $request->input('dob');
+            $utilisateur->date_nais = $request->input('dob');
+            $utilisateur->date_inscription = date("Y-m-d");;
             $utilisateur->status = "actif";
-            $utilisateur->Favoris = "0";
             $utilisateur->Permission = "0";
             // save the user in the database
             $utilisateur->save();

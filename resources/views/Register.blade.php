@@ -1,7 +1,23 @@
 <!DOCTYPE html>
 <html>
- <head>
+<head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ asset('css/globals.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+</head>
+<body>
+@include('layout.header')
+<main class="content-container">
+    <div class="page-d-inscription">
+        <div class="div">
+            @if (session('error'))
+                <div class="alert alert-error">
+                    <ul>
+                        {{ session('error') }}
+                    </ul>
+                </div>
+            @endif
+            <form id="registrationForm" class="form" method = "post" action = "/postUser">
      <link rel="stylesheet" href="{{ asset('css/globals.css') }}" />
      <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
  </head>
@@ -58,6 +74,10 @@
             </form>
         </div>
     </div>
+</main>
+@include('layout.footer')
+</body>
+</html>
  </main>
  @include('layout.footer')
  </body>

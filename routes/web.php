@@ -62,6 +62,9 @@ Route::get('/Admin', function () {
     return view('Administrator');
 })->name('Admin');
 
+
+
+
 /**
  * Request POST
  */
@@ -84,7 +87,6 @@ Route::get('/ressources/{id}/edit', [EditorController::class, 'edit'])->name('re
 Route::get('/getMail/{mail}', [LoginController::class, 'getMail'])->name('getMail');
 Route::get('/check-favorite/{id}', [EditorController::class, 'checkFavorite'])->name('check.favorite');
 Route::get('/commentaires/{id}/edit', [CommentController::class, 'edit'])->name('commentaire.edit');
-Route::get('/getUsers', [LoginController::class, 'getUsers'])->name('Administrateur');
 
 
 /**
