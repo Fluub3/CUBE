@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReponseCommentaire;
 use App\Models\users;
 use Illuminate\Http\Request;
 use App\Models\ressources as ressources;
@@ -143,6 +144,15 @@ class EditorController extends Controller
     public function destroy($id)
     {
         $ressource = Ressources::findOrFail($id);
+
+        $commentaires = Comment::where('ressources_id', $id)->get();
+
+        // Supprimer chaque réponse associée
+        foreach ($commentaires as $commentaire) {
+            $commentaire->delete();
+        }
+
+
         $ressource->delete();
 
         return redirect()->route('home')->with('success', 'Ressource supprimée avec succès');
