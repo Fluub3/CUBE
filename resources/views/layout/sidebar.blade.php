@@ -7,7 +7,7 @@
     <div class="menu-item"><a href="{{ route('favoris') }}" class="menuA">Mes favoris</a></div>
     <div class="menu-item"><a href="{{ route('editor') }}" class="menuA">Ajouter une ressource</a></div>
     @if(Auth::user()->Permission == 2)
-    <div class="menu-item"><a href="{{ route('Administrateur') }}" class="menuA">Menu admin</a></div>
+        <div class="menu-item"><a href="/admin/tag" class="menuA">Menu admin</a></div>
     @endif
     <!-- Afficher le bouton "Déconnexion" si l'utilisateur est connecté -->
     <div class="menu-item"><a href="{{ route('logout') }}" class="menuA" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a></div>

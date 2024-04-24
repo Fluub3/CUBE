@@ -22,15 +22,10 @@ return new class extends Migration
             $table->string('ville', 200)->nullable();
             $table->string('mail', 200)->nullable();
             $table->date('date_inscription')->nullable();
-            $table->date('Date');
             $table->string('Status', 200);
-            $table->integer('Favoris')->nullable();
-            $table->string('Permission', 200)->nullable();
-            $table->integer('Id_Ressource')->nullable();
-            $table->string('Id_commentaire', 200)->nullable();
-            $table->string('Id_Reponse_Com', 200)->nullable();
+            $table->string('Permission', 200)->default(0);
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
-            $table->unique(['Favoris', 'Id_Groupe', 'Id_Ressource', 'Id_commentaire', 'Id_Reponse_Com'], 'User_AK');
         });
     }
 

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use App\Models\ressources as ressources;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class users extends Model
 {
+    use CrudTrait;
     use HasFactory;
 
     public function favoris()
@@ -17,6 +19,7 @@ class users extends Model
     protected $table = 'users';
 
     protected $fillable = [
+
         'password',
         'nom',
         'prenom',
@@ -26,12 +29,9 @@ class users extends Model
         'ville',
         'mail',
         'date_inscription',
-        'date',
         'Status',
         'Favoris',
         'Permission',
-        'Id_Ressource',
-        'Id_commentaire',
-        'Id_Reponse_Com'
+        'is_admin'
     ];
 }
