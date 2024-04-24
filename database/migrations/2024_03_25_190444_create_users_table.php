@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->text('password');
             $table->string('nom', 100);
             $table->string('prenom', 100);
             $table->string('password',250);
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('Status', 200);
             $table->string('Permission', 200)->default(0);
             $table->boolean('is_admin')->default(false);
+
             $table->timestamps();
         });
     }

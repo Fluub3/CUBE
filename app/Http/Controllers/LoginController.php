@@ -8,21 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\users as dbusers;
 use Illuminate\Support\Facades\Auth;
 
+
 class LoginController extends Controller
 {
-    public function getMail(Request $request) {
-
-        // get the user in the bdd via it's mail
-        $user = dbusers::where('mail', $request->mail)->get();
-        // We check that the user exist
-        if ($user) {
-            // Retourner l'email de l'utilisateur
-            return ($user);
-        } else {
-            // Retourner une réponse indiquant que l'utilisateur n'existe pas
-            return ('Hello World');
-        }
-    }
 
     public function checkLogin(Request $request)
     {
@@ -40,6 +28,31 @@ class LoginController extends Controller
     }
 
     // Use to register a new user
+        } 
+    }
+
+    public function openSession () {
+        // TODO, opening the session in php
+    }
+
+    public function checkLogin (Request $request) {
+        // This function retrieve the password and verify it match with the mail adress of the user
+        
+        // get the users password via its mail
+        $user = new dbusers;
+        $user = dbusers::where('mail', $request->mail)->get();
+
+        // get the password from the web page
+        $temppass1 =  bcrypt($request->input('password'));
+        if($user->password == $temppass1){
+            // OPEN THE SESSION IN PHP
+        } else {
+            // the password does not match we need to return the view of the login page
+        }
+        return ($user);
+    }
+
+    // Use to register a new user 
     public function postUser(Request $request) {
 
         // Here we check that the two password are matching
@@ -63,6 +76,8 @@ class LoginController extends Controller
             // save the user in the database
             $utilisateur->save();
             return redirect()->route('home');
+          // save the user in the database
+            $utilisateur->save();
         } else {
             // Show a notification error if there is some problem with the values
             return view('/Register')->with('error', 'Veuillez remplir tout les champs du formulaire');
@@ -83,11 +98,8 @@ class LoginController extends Controller
             $mail->password = bcrypt($temppass1);
             $mail->save();
             return redirect()->route('connection')->with('error', 'Mot de passe modifier');
-
-
         }else{
             return redirect()->route('forgot-password')->with('error', 'Mots de passe non identiques');
-
         }
 
 
@@ -123,8 +135,10 @@ class LoginController extends Controller
 
     public function logout()
     {
+
         Auth::logout(); // Déconnexion de l'utilisateur
         return redirect()->route('home'); // Redirection vers la page de connexion
+        }    
     }
 
 }

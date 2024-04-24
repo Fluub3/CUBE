@@ -1,4 +1,3 @@
-
 /* Reset CSS */
 * {
     margin: 0;
@@ -14,16 +13,11 @@ body {
 
 .container {
     max-width: 1600px;
-
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative; /* Ajoutez ceci pour positionner la barre latérale par rapport à son conteneur */
-
-
 }
 
 /* Form Styles */
@@ -120,26 +114,3 @@ input[type="submit"]:hover {
     left: 0;
     visibility: hidden;
 }
-
-
-/* Style pour le conteneur du titre */
-.title-container {
-    margin-bottom: 20px; /* Espacement entre le champ de titre et la zone d'édition du contenu */
-}
-
-/* Style pour le label du titre */
-.title-container label {
-    font-weight: bold; /* Texte en gras */
-    margin-right: 10px; /* Espacement entre le label et le champ de saisie */
-}
-
-/* Style pour le champ de saisie du titre */
-.title-container input[type="text"] {
-    width: 100%; /* Largeur de 100% */
-    padding: 10px; /* Remplissage intérieur */
-    font-size: 16px; /* Taille de police */
-    border: 1px solid #ccc; /* Bordure grise */
-    border-radius: 5px; /* Coins arrondis */
-    box-sizing: border-box; /* Inclure la bordure et le remplissage dans la largeur */
-}
-
