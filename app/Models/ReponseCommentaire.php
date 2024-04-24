@@ -15,7 +15,7 @@ class ReponseCommentaire extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user'); // Assurez-vous de remplacer 'id_user' par la clé étrangère appropriée dans votre table reponse_commentaires
+        return $this->belongsTo(User::class, 'id_user'); 
     }
 
 }

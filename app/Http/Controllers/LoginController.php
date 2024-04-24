@@ -11,19 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function getMail(Request $request) {
-
-        // get the user in the bdd via it's mail
-        $user = dbusers::where('mail', $request->mail)->get();
-        // We check that the user exist
-        if ($user) {
-            // Retourner l'email de l'utilisateur
-            return ($user);
-        } else {
-            // Retourner une réponse indiquant que l'utilisateur n'existe pas
-            return ('Hello World');
-        }
-    }
 
     public function checkLogin(Request $request)
     {
@@ -111,11 +98,8 @@ class LoginController extends Controller
             $mail->password = bcrypt($temppass1);
             $mail->save();
             return redirect()->route('connection')->with('error', 'Mot de passe modifier');
-
-
         }else{
             return redirect()->route('forgot-password')->with('error', 'Mots de passe non identiques');
-
         }
 
 
@@ -151,6 +135,7 @@ class LoginController extends Controller
 
     public function logout()
     {
+
         Auth::logout(); // Déconnexion de l'utilisateur
         return redirect()->route('home'); // Redirection vers la page de connexion
         }    

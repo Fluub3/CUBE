@@ -29,7 +29,7 @@ html, body {
 
 /* Form Container Styles */
 .content-container {
-    padding-top: 80px;
+    padding-top: 20px;
     width: 100%;
     max-width: 500px;
     margin: auto;
@@ -48,16 +48,21 @@ html, body {
 
 .form-group {
     margin: 10px;
+    padding: 0px;
 }
 
 .form-group label {
-    display: block;
+    /* If you want the 'Sexe' label to appear like other labels, remove the 'display: block;' */
     margin-bottom: 8px;
     color: #333;
     font-size: 16px;
 }
 
-.form-group input,
+/* Since you want the radio buttons next to each other, you don't want them to be 100% width */
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="date"],
 .form-group button {
     width: 100%;
     padding: 12px 15px;
@@ -66,42 +71,39 @@ html, body {
     border-radius: 4px;
 }
 
-.form-group input[type="radio"] {
-    margin-right: 10px;
-}
-
-.form-group.sexe label {
-    margin-right: 10px; /* Space after the label text */
-    margin-left: 0; /* Remove left margin */
-}
-
+/* Update your radio button specific styles here */
 .form-group.sexe {
-    display: flex;
-    align-items: center;
+    display: flex; /* This will line up the child elements in a row */
+    align-items: center; /* This will vertically align them in the middle */
+    margin-bottom: 20px; /* Keep consistent spacing with other form elements */
 }
 
-/* Hiding the default radio input appearance */
-.form-group.sexe input[type="radio"] {
-    display: none;
-}
-
-/* Custom radio button styling */
+/* Adjust label styles for inline display */
 .form-group.sexe label {
-    display: inline-block;
-    background-color: #f4f4f4;
+    margin-right: 10px;
+    margin-left: 0;
+    /* You can adjust padding and margins as needed to align with the design */
     padding: 5px 10px;
+    background-color: #f4f4f4;
     border: 1px solid #d1d3d4;
     border-radius: 10px;
-    margin-right: 5px;
     cursor: pointer;
 }
 
-/* Styles for when the radio button is selected */
+/* Hide the default radio input appearance */
+.form-group.sexe input[type="radio"] {
+    opacity: 0; /* Hiding the radio button but still accessible */
+    position: absolute; /* Remove from the flow so labels can be side by side */
+    width: 0; /* Remove width so it doesn't affect the layout */
+}
+
+/* Style for when the radio button is selected */
 .form-group.sexe input[type="radio"]:checked + label {
     background-color: #005b96;
     color: white;
     border-color: #005b96;
 }
+
 
 /* Button Styles */
 .submit-button,

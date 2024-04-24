@@ -20,7 +20,7 @@ use App\Http\Controllers\ReponseCommentaireController;
 
 
 /**
- * Requete redirection de page
+ * Request redirection de page
  */
 
 Route::get('/', [EditorController::class, 'index'])->name('home');
@@ -63,7 +63,7 @@ Route::get('/Admin', function () {
 })->name('Admin');
 
 /**
- * Requete POST
+ * Request POST
  */
 Route::post('/postUser', [LoginController::class, 'postUser'])->name('postUser');
 Route::post('/checkLogin', [LoginController::class, 'checkLogin'])->name('checkLogin');
@@ -76,7 +76,7 @@ Route::post('/ressource/{id}/generate-link', [EditorController::class, 'generate
 Route::post('/AdminChange', [LoginController::class, 'updateUserPerm'])->name('AdminChange');
 
 /**
- * Requete GET
+ * Request GET
  */
 
 
@@ -88,13 +88,13 @@ Route::get('/getUsers', [LoginController::class, 'getUsers'])->name('Administrat
 
 
 /**
- * Requete PUT
+ * Request PUT
  */
 Route::put('/ressources/{id}', [EditorController::class, 'update'])->name('ressource.update');
 Route::put('/commentaires/{id}', [CommentController::class, 'update'])->name('commentaire.update');
 
 /**
- * Requete DELETE
+ * Request DELETE
  */
 Route::delete('/ressources/{id}', [EditorController::class, 'destroy'])->name('ressource.destroy');
 Route::delete('/commentaires/{id}', [CommentController::class, 'destroy'])->name('commentaire.destroy');
