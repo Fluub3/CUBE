@@ -265,4 +265,500 @@ html, body {
 
 a[href]:not(:visited) {
     text-decoration: none; /* Supprimez la soulignement par défaut */
+
+.page-d-inscription {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-d-inscription .div {
+  background-color: #ffffff;
+  width: 2039px;
+  height: 2129px;
+  position: relative;
+}
+
+.page-d-inscription .bouton-d-inscription {
+  position: absolute;
+  width: 360px;
+  height: 111px;
+  top: 1991px;
+  left: 775px;
+}
+
+.page-d-inscription .overlap-group {
+  position: relative;
+  width: 358px;
+  height: 111px;
+  background-color: #220694;
+  border-radius: 12px;
+}
+
+.page-d-inscription .text-wrapper {
+  position: absolute;
+  width: 358px;
+  height: 111px;
+  top: 0;
+  left: 0;
+  font-family: "Arial-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.page-d-inscription .overlap {
+  position: absolute;
+  width: 1248px;
+  height: 204px;
+  top: 28px;
+  left: 25px;
+}
+
+.page-d-inscription .haut-de-page {
+  position: absolute;
+  width: 1248px;
+  height: 194px;
+  top: 0;
+  left: 0;
+}
+
+.page-d-inscription .image {
+  width: 368px;
+  height: 185px;
+  top: 8px;
+  left: 0;
+  position: absolute;
+  object-fit: cover;
+}
+
+.page-d-inscription .service-public {
+  width: 833px;
+  height: 75px;
+  left: 419px;
+  position: absolute;
+  top: 0;
+}
+
+.page-d-inscription .text-wrapper-2 {
+  width: 551px;
+  left: 0;
+  font-family: "Arial-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 36px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+}
+
+.page-d-inscription .p {
+  position: absolute;
+  width: 829px;
+  top: 47px;
+  left: 0;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.page-d-inscription .text-wrapper-3 {
+  position: absolute;
+  top: 149px;
+  left: 560px;
+  font-family: "Arial-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 48px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.page-d-inscription .nom {
+  position: absolute;
+  width: 846px;
+  height: 138px;
+  top: 652px;
+  left: 552px;
+}
+
+.page-d-inscription .email-example {
+  position: absolute;
+  width: 201px;
+  height: 43px;
+  top: 0;
+  left: 1px;
+}
+
+.page-d-inscription .text-wrapper-4 {
+  position: absolute;
+  width: 199px;
+  height: 43px;
+  top: 0;
+  left: 0;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.page-d-inscription .barre-input-email {
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  top: 52px;
+  left: 0;
+}
+
+.page-d-inscription .rectangle {
+  position: absolute;
+  width: 844px;
+  height: 82px;
+  top: 0;
+  left: 1px;
+  background-color: #d9d9d9;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.page-d-inscription .email-input-line {
+  position: absolute;
+  width: 846px;
+  height: 3px;
+  top: 83px;
+  left: 0;
+}
+
+.page-d-inscription .prnom {
+  position: absolute;
+  width: 846px;
+  height: 138px;
+  top: 839px;
+  left: 555px;
+}
+
+.page-d-inscription .email {
+  position: absolute;
+  width: 846px;
+  height: 153px;
+  top: 1245px;
+  left: 555px;
+}
+
+.page-d-inscription .overlap-group-wrapper {
+  width: 203px;
+  height: 54px;
+  left: 1px;
+  position: absolute;
+  top: 0;
+}
+
+.page-d-inscription .overlap-group-2 {
+  position: relative;
+  width: 199px;
+  height: 54px;
+}
+
+.page-d-inscription .text-wrapper-5 {
+  position: absolute;
+  height: 14px;
+  top: 40px;
+  left: 2px;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #bebebe;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.page-d-inscription .barre-input-email-2 {
+  top: 67px;
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  left: 0;
+}
+
+.page-d-inscription .mot-de-passe {
+  position: absolute;
+  width: 846px;
+  height: 220px;
+  top: 1469px;
+  left: 551px;
+}
+
+.page-d-inscription .div-wrapper {
+  width: 203px;
+  height: 130px;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.page-d-inscription .overlap-group-3 {
+  position: relative;
+  width: 199px;
+  height: 130px;
+}
+
+.page-d-inscription .le-mot-de-passe-doit {
+  position: absolute;
+  height: 98px;
+  top: 32px;
+  left: 1px;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #bebebe;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.page-d-inscription .barre-input-email-3 {
+  top: 134px;
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  left: 0;
+}
+
+.page-d-inscription .confirmation {
+  position: absolute;
+  width: 846px;
+  height: 152px;
+  top: 1761px;
+  left: 554px;
+}
+
+.page-d-inscription .email-example-2 {
+  width: 201px;
+  height: 43px;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.page-d-inscription .barre-input-email-4 {
+  top: 66px;
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  left: 0;
+}
+
+.page-d-inscription .sexe {
+  position: absolute;
+  width: 368px;
+  height: 76px;
+  top: 541px;
+  left: 557px;
+}
+
+.page-d-inscription .sexes {
+  position: absolute;
+  width: 374px;
+  height: 18px;
+  top: 58px;
+  left: 0;
+}
+
+.page-d-inscription .ellipse {
+  left: 0;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  background-color: #fcfcfc;
+  border-radius: 7px;
+  border: 1px solid;
+  border-color: #00000094;
+}
+
+.page-d-inscription .ellipse-2 {
+  left: 305px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  background-color: #fcfcfc;
+  border-radius: 7px;
+  border: 1px solid;
+  border-color: #00000094;
+}
+
+.page-d-inscription .ellipse-3 {
+  left: 156px;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 2px;
+  background-color: #fcfcfc;
+  border-radius: 7px;
+  border: 1px solid;
+  border-color: #00000094;
+}
+
+.page-d-inscription .text-wrapper-6 {
+  position: absolute;
+  height: 18px;
+  top: 0;
+  left: 27px;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.page-d-inscription .text-wrapper-7 {
+  position: absolute;
+  height: 18px;
+  top: 0;
+  left: 329px;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.page-d-inscription .text-wrapper-8 {
+  position: absolute;
+  height: 18px;
+  top: 0;
+  left: 179px;
+  font-family: "Arial-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.page-d-inscription .date-de-naissance {
+  position: absolute;
+  width: 846px;
+  height: 136px;
+  top: 1042px;
+  left: 551px;
+}
+
+.page-d-inscription .input-calendrier {
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  top: 50px;
+  left: 0;
+}
+
+.page-d-inscription .overlap-group-4 {
+  position: relative;
+  height: 86px;
+}
+
+.page-d-inscription .barre-input-email-5 {
+  top: 0;
+  position: absolute;
+  width: 846px;
+  height: 86px;
+  left: 0;
+}
+
+.page-d-inscription .calendrier {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: 19px;
+  left: 13px;
+  object-fit: cover;
+}
+
+.page-d-inscription .identification-FC {
+  position: absolute;
+  width: 846px;
+  height: 228px;
+  top: 267px;
+  left: 557px;
+}
+
+.page-d-inscription .overlap-2 {
+  position: relative;
+  width: 844px;
+  height: 228px;
+  background-color: #ffffff;
+  border: 1.5px solid;
+  border-color: #00008c;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.page-d-inscription .overlap-group-5 {
+  position: absolute;
+  width: 307px;
+  height: 97px;
+  top: 49px;
+  left: 268px;
+  background-color: #220694;
+}
+
+.page-d-inscription .s-identifier-avec {
+  position: absolute;
+  width: 262px;
+  top: 23px;
+  left: 24px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 24px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.page-d-inscription .img {
+  width: 78px;
+  height: 90px;
+  top: 7px;
+  left: 22px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.page-d-inscription .frame {
+  position: absolute;
+  width: 518px;
+  height: 69px;
+  top: 144px;
+  left: 182px;
+}
+
+.page-d-inscription .qu-est-ce-que {
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  font-family: "Inter", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
 }
