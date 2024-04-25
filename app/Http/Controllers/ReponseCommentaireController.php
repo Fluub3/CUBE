@@ -11,19 +11,19 @@ class ReponseCommentaireController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the form request
+        // Valider les données du formulaire
         $request->validate([
             'commentaire_id' => 'required|exists:commentaires,id',
             'contenu' => 'required|string|max:255',
         ]);
 
-        // Create a new comments
+        // Créer une nouvelle réponse au commentaire
         ReponseCommentaire::create([
             'id_commentaire' => $request->commentaire_id,
-            'id_user' => auth()->id(), 
-            'id_User_Appartenir' => auth()->id(), 
+            'id_user' => auth()->id(), // Assurez-vous que ce champ correspond au nom de votre champ utilisateur
+            'id_User_Appartenir' => auth()->id(), // Assurez-vous que ce champ correspond au nom de votre champ utilisateur
             'Contenue' => $request->contenu,
-            'Id_Commentaire_Afficher' => $request->commentaire_id, 
+            'Id_Commentaire_Afficher' => $request->commentaire_id, // Spécifiez une valeur pour ce champ
         ]);
 
         return redirect()->back()->with('success', 'Votre réponse a été ajoutée avec succès !');

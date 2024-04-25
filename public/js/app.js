@@ -94,41 +94,39 @@ document.getElementById('btn-video').addEventListener('click', addVideo);
 
 
 
-// Fonction pour insérer un tableau
-document.getElementById('btn-insert-table').addEventListener('click', function() {
-    var tableHtml = '<table border="1"><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table>';
-    document.getElementById('editor-content').focus();
-    document.execCommand('insertHTML', false, tableHtml);
-});
-
-// Fonction pour insérer un spoiler
-document.getElementById('btn-insert-spoiler').addEventListener('click', function() {
-    var spoilerHtml = '<details><summary>Titre du spoiler</summary><p>Contenu du spoiler</p></details>';
-    document.getElementById('editor-content').focus();
-    document.execCommand('insertHTML', false, spoilerHtml);
-});
-
-// Fonction pour insérer une liste
-document.getElementById('btn-insert-list').addEventListener('click', function() {
-    var listHtml = '<ul><li>Élément 1</li><li>Élément 2</li><li>Élément 3</li></ul>';
-    document.getElementById('editor-content').focus();
-    document.execCommand('insertHTML', false, listHtml);
-});
 
 
-    const formattedContent = editorContent.innerHTML.replace(/<[^>]*>/g, function(match) {
-        if (match.includes('class="bold"')) {
-            return '<strong>';
-        } else if (match.includes('class="italic"')) {
-            return '<em>';
-        } else {
-            return match;
-        }
-    }).replace(/<\/div>/g, function(match) {
-        return '</strong></em></div>';
-    });
-    // Envoyez formattedContent à votre backend pour enregistrement en base de données
-    console.log(formattedContent);
-    // Vous pouvez ensuite soumettre le formulaire
-    // document.getElementById('editor-form').submit();
+
+document.getElementById('btn-Submit').addEventListener('click', function(event) {
+    event.preventDefault();
+    const editorContent = document.getElementById('editor-content');
+    const editorContentInput = document.getElementById('editorContentInput');
+    const selection = window.getSelection();
+    const range = selection.getRangeAt(0);
+    let formattedContent = editorContent.innerHTML;
+
+    // Si la sélection contient un élément de tableau ou de liste
+    if (selection.anchorNode.parentNode.nodeName === 'TD' || selection.anchorNode.parentNode.nodeName === 'LI') {
+        const tag = selection.anchorNode.parentNode.nodeName.toLowerCase();
+        const startTag = '<' + tag + '>';
+        const endTag = '</' + tag + '>';
+        formattedContent = formattedContent.substring(0, range.startOffset) + startTag +
+                           formattedContent.substring(range.startOffset, range.endOffset) + endTag +
+                           formattedContent.substring(range.endOffset);
+    } else {
+        formattedContent = formattedContent.replace(range.toString(), function(match) {
+            if (selection.anchorNode.parentNode.nodeName === 'STRONG') {
+                return '<strong>' + match + '</strong>';
+            } else if (selection.anchorNode.parentNode.nodeName === 'EM') {
+                return '<em>' + match + '</em>';
+            } else {
+                return '<p>' + match + '</p>';
+            }
+        });
+    }
+
+
+    editorContentInput.value = formattedContent;
+    document.getElementById('Envoyer').click();
 });
+

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ReponseCommentaire;
 use Illuminate\Http\Request;
-use App\Models\Comment;
+use App\Models\Comment; // Assurez-vous d'importer le modèle de commentaire si ce n'est pas déjà fait
 
 class CommentController extends Controller
 {
@@ -18,9 +18,9 @@ class CommentController extends Controller
     public function edit($id)
     {
         $commentaire = Comment::findOrFail($id);
-        // Here we check that the user is allowed to modify the comment
+        // Vérifiez si l'utilisateur est autorisé à modifier ce commentaire
         if ($commentaire->user_id !== auth()->id()) {
-            // show a error notification if he is not allowed to modify the comment
+            // Redirigez l'utilisateur avec un message d'erreur ou affichez une vue d'erreur
             return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à modifier ce commentaire.');
         }
         return view('commentaire.edit', compact('commentaire'));
@@ -28,9 +28,10 @@ class CommentController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Same thing here as edit, we check if the user is allowed to modify the comment
         $commentaire = Comment::findOrFail($id);
+        // Vérifiez si l'utilisateur est autorisé à modifier ce commentaire
         if ($commentaire->user_id !== auth()->id()) {
+            // Redirigez l'utilisateur avec un message d'erreur ou affichez une vue d'erreur
             return redirect()->back()->with('error', 'Vous n\'êtes pas autorisé à modifier ce commentaire.');
         }
         $commentaire->update([
@@ -41,12 +42,12 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $commentaire = Comment::findOrFail($id);
-        // Here we check that the user is the one who created the comment
+        // Vérifie si l'utilisateur actuel est l'auteur du commentaire
 
-        // Here we catch all the answer to this comments
+        // Récupérer les réponses associées à ce commentaire
         $reponses = ReponseCommentaire::where('id_commentaire', $id)->get();
 
-        // Here we delete all the answer, then we delete the commentss
+        // Supprimer chaque réponse associée
         foreach ($reponses as $reponse) {
             $reponse->delete();
         }

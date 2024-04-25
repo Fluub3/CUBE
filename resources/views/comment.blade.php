@@ -1,6 +1,5 @@
 @extends('layout.comment_layout')
 
-
 @section('comment')
 
     <div class="d-flex flex-column comment-section">

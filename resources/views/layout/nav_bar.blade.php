@@ -14,6 +14,7 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/8c40c31b29.js" crossorigin="anonymous"></script>
 
 
 
@@ -53,14 +54,58 @@
         }
         }
 
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.remove('d-none');
+        }
+
+        function toggleSidebarClose() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.add('d-none');
+        }
+
+        // Fonction pour détecter la largeur de l'écran et appliquer la classe d-none en conséquence
+        function toggleSidebarVisibility() {
+            var sidebar = document.querySelector('.sidebar');
+            var menutoggles = document.querySelectorAll('.menu-toggle');
+            if (window.innerWidth <= 1000) {
+                sidebar.classList.add('d-none');
+                menutoggles.forEach(function(menutoggle) {
+                    menutoggle.classList.remove('d-none');
+                });
+            } else {
+                sidebar.classList.remove('d-none');
+                menutoggles.forEach(function(menutoggle) {
+                    menutoggle.classList.add('d-none');
+                });
+            }
+        }
+
+
+        // Appeler la fonction au chargement de la page et lors du redimensionnement de la fenêtre
+        window.onload = toggleSidebarVisibility;
+        window.onresize = toggleSidebarVisibility;
+
+
+
 
     </script>
 
 </head>
 <body>
 @include('layout.header')
+<!-- Ajoutez l'icône de menu -->
 
-<div class="sidebar">
+<div class="menu-toggle" onclick="toggleSidebar()">
+    <i class="fa-solid fa-bars"></i>
+    </i>
+</div>
+<div class="sidebar d-none">
+
+    <div class="menu-toggle" onclick="toggleSidebarClose()">
+        <i class="fa-solid fa-xmark"></i>
+
+    </div>
     @yield('sidebar') <!-- Contenu de la sidebar -->
 </div>
 
@@ -71,4 +116,3 @@
 @include('layout.footer')
 </body>
 </html>
-

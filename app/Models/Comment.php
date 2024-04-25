@@ -11,10 +11,10 @@ class Comment extends Model
     use CrudTrait;
     use HasFactory;
 
-    // Define the table associated to the model
+    // Définition de la table associée au modèle
     protected $table = 'commentaires';
 
-    // These data can be modified
+    // Indication des colonnes pouvant être massivement affectées
     protected $fillable = [
         'Contenue',
         'id_ressource',
@@ -23,7 +23,8 @@ class Comment extends Model
         'ID_Ressource_Afficher',
     ];
 
-    // Define relation toward other models
+    // Définition des relations avec d'autres modèles
+    // Dans votre modèle Commentaire
     public function user()
     {
         return $this->belongsTo(users::class);
@@ -40,4 +41,7 @@ class Comment extends Model
     {
         return $this->hasMany(ReponseCommentaire::class, 'id_commentaire');
     }
+
+
+    // Autres méthodes ou attributs du modèle, le cas échéant
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReponseCommentaire;
 use App\Models\users;
 use Illuminate\Http\Request;
 use App\Models\ressources as ressources;
@@ -12,16 +13,13 @@ use Illuminate\Support\Str;
 
 
 
-use App\Models\content as content;
- 
-
 class EditorController extends Controller
 {
-    
+    //
 
     public function index()
     {
-        $ressources = Ressources::all(); // Retrieve all the ressources from the database
+        $ressources = Ressources::all(); // Récupère toutes les ressources de la base de données
         return view('home', ['ressources' => $ressources]);
     }
 
@@ -30,56 +28,48 @@ class EditorController extends Controller
     public function show($id)
     {
         $ressource = ressources::findOrFail($id);
-        // Load the comments with the associated users
+        // Charger les commentaires avec les utilisateurs associés
         $commentaires = Comment::with('user')->where('ressources_id', $id)->get();
 
         return view('ressources', compact('ressource', 'commentaires'));
-        return view('/ressources', ['ressource' => $ressource]);
-
-    public function index()
-    {
-        return view('editor');
     }
 
 
 
     public function save(Request $request)
     {
-        // Retrieve the actual auth user
+        // Récupérer l'utilisateur actuellement authentifié
         $user = Auth::user();
 
-        // Create a new Ressource
+        // Créer une nouvelle ressource
         $ress = new ressources;
 
-        // We set the data retrieve from the from in the HTML and put it in the new ress object
+        // Définir les valeurs des champs de la ressource
         $ress->Titre_ressource = $request->input('title');
         $ress->Contenue = $request->input('contenue');
         $ress->Date = now();
-        $ress->id_user = $user->id;     // Retrieve the id of the current user
+        $ress->id_user = $user->id; // Utiliser l'ID de l'utilisateur actuel
         $ress->Nb_vue = 0;
         $ress->Status = 'Actif';
         $ress->id_commentaire = 0;
         $ress->permission_ressource = $request->input('visibility');;
         $ress->id_Permission_Ressource_Permettre = 0;
-        $ress->id_User_Creer = $user->id; // Same here with the current user id
+        $ress->id_User_Creer = $user->id; // Utiliser l'ID de l'utilisateur actuel
 
-        // Save the ress in the database
+        // Enregistrer la ressource dans la base de données
         $ress->save();
 
-        // Redirect the user to the main page
+        // Rediriger l'utilisateur vers la page d'accueil
         return redirect()->route('home')->with('success', 'La ressource a été enregistrée avec succès.');
     }
 
     public function edit($id)
     {
-        // Edit mode for the ress
         $ressource = Ressources::findOrFail($id);
         return view('editRessources', ['ressource' => $ressource]);
     }
-
     public function update(Request $request, $id)
     {
-        // Here we update the ress after an edit mode
         $ressource = Ressources::findOrFail($id);
         $ressource->Titre_ressource = $request->input('Titre_ressource');
         $ressource->Contenue = $request->input('contenue');
@@ -93,17 +83,22 @@ class EditorController extends Controller
         $userId = auth()->id();
         $ressourceId = $request->ressource_id;
 
-        // We check that the ress isn't in the fav of the user already
+        // Vérifier si la ressource est déjà dans les favoris de l'utilisateur
         $user = users::findOrFail($userId);
         $isFavorite = $user->favoris()->where('id_Ressource', $ressourceId)->exists();
 
+        // Affiche la valeur de $isFavorite pour le débogage
+        //dd($isFavorite);
+
         if ($isFavorite) {
-            // if the ress if already in the fav we delete it from the fave of the user
+            // Si la ressource est déjà dans les favoris, la retirer
             auth()->user()->favoris()->detach($ressourceId);
+            //$user->favoris()->detach($ressourceId);
             return response()->json(['message' => 'Ressource retirée des favoris avec succès']);
         } else {
-            // if the ress is not in the fav we add it in the fav of the user
+            // Si la ressource n'est pas dans les favoris, l'ajouter
             auth()->user()->favoris()->attach($ressourceId);
+            //$user->favoris()->attach($ressourceId);
             return response()->json(['message' => 'Ressource ajoutée aux favoris avec succès']);
         }
     }
@@ -111,28 +106,29 @@ class EditorController extends Controller
 
     public function checkFavorite($id)
     {
+        // Récupérer l'utilisateur actuellement authentifié
         $user = Auth::user();
 
-        // Check if the ress if in the favorite of the user
+        // Vérifier si la ressource est dans les favoris de l'utilisateur
         $isFavorite = $user->favoris->contains($id);
 
-        // Return the data in json
+        // Retourner la réponse JSON
         return response()->json(['isFavorite' => $isFavorite]);
     }
 
     public function generateLink($id)
     {
-        // Find the ress
+        // Trouver la ressource
         $ressource = ressources::findOrFail($id);
 
-        // Check if the user is the creator of the ress
-            // Generate a link with a unique token
+        // Vérifier si l'utilisateur est le créateur de la ressource
+            // Générer le lien avec un token unique
             $token = Str::random(20);
             $link = route('ressource.show', ['id' => $id, 'token' => $token]);
 
-            // TOTO add a save in the database of the link
+            // Enregistrer le lien dans la base de données ou effectuer d'autres actions nécessaires
 
-            // Redirect the user toward the link
+            // Rediriger l'utilisateur vers le lien généré
             return $link;
 
     }
@@ -148,20 +144,18 @@ class EditorController extends Controller
     public function destroy($id)
     {
         $ressource = Ressources::findOrFail($id);
+
+        $commentaires = Comment::where('ressources_id', $id)->get();
+
+        // Supprimer chaque réponse associée
+        foreach ($commentaires as $commentaire) {
+            $commentaire->delete();
+        }
+
+
         $ressource->delete();
 
         return redirect()->route('home')->with('success', 'Ressource supprimée avec succès');
     }
 
-
-        $ress = new content;
-        //à voir pour le titre de la ressources pcq j'ai pas de champ la
-        $ress->Contenue = $request->input('editor-content');
-        $ress->Date = now();
-        $ress->id_user = $_SESSION;
-        
-        $ress->save();
-        return view('editor');
-
-    }
 }

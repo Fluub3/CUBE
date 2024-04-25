@@ -6,7 +6,6 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReponseCommentaireController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,17 +19,13 @@ use App\Http\Controllers\ReponseCommentaireController;
 
 
 /**
- * Request redirection de page
+ * Requete redirection de page
  */
 
 Route::get('/', [EditorController::class, 'index'])->name('home');
 Route::get('/Favoris', [LoginController::class, 'favoris'])->name('favoris');
 Route::get('/ressources/{id}', [EditorController::class, 'show'])->name('ressource.show');
 Route::post('/editor/save', [EditorController::class, 'save'])->name('editor.save');
-Route::get('/', function () {
-    return view('welcome');
-});
- 
 
 Route::get('/test', function () {
     return view('jesaispas');
@@ -66,7 +61,7 @@ Route::get('/Admin', function () {
 
 
 /**
- * Request POST
+ * Requete POST
  */
 Route::post('/postUser', [LoginController::class, 'postUser'])->name('postUser');
 Route::post('/checkLogin', [LoginController::class, 'checkLogin'])->name('checkLogin');
@@ -79,7 +74,7 @@ Route::post('/ressource/{id}/generate-link', [EditorController::class, 'generate
 Route::post('/AdminChange', [LoginController::class, 'updateUserPerm'])->name('AdminChange');
 
 /**
- * Request GET
+ * Requete GET
  */
 
 
@@ -90,54 +85,15 @@ Route::get('/commentaires/{id}/edit', [CommentController::class, 'edit'])->name(
 
 
 /**
- * Request PUT
+ * Requete PUT
  */
 Route::put('/ressources/{id}', [EditorController::class, 'update'])->name('ressource.update');
 Route::put('/commentaires/{id}', [CommentController::class, 'update'])->name('commentaire.update');
 
 /**
- * Request DELETE
+ * Requete DELETE
  */
 Route::delete('/ressources/{id}', [EditorController::class, 'destroy'])->name('ressource.destroy');
 Route::delete('/commentaires/{id}', [CommentController::class, 'destroy'])->name('commentaire.destroy');
 
-
-Route::get('/Register', function () {
-    return view('/Register');
-});
-
-Route::view('/', 'home')->name('home');
-Route::view('/Ressources', 'Ressources')->name('Ressources');
-Route::view('/Favoris', 'Favoris')->name('Favoris');
-Route::view('/aboutus', 'aboutUs')->name('aboutus');
-
-Route::get('/getMail/{mail}', [LoginController::class, 'getMail']);
-Route::post('/postUser', [LoginController::class, 'postUser']);
-
-//Route::get('/getPassword/{pass}', [FrontController::class, 'getPassword']);
-  
-Route::get('/comment_layout', function () {
-    return view('comment');
-
-Route::get('/test/route/helloword', function () {
-    return view('/layout/app');
-});
-
-Route::get('/Register', function () {
-    return view('/Register');
-});
-
-Route::view('/', 'home')->name('home');
-Route::view('/Ressources', 'Ressources')->name('Ressources');
-Route::view('/Favoris', 'Favoris')->name('Favoris');
-Route::view('/aboutus', 'aboutUs')->name('aboutus');
-
-Route::get('/getMail/{mail}', [LoginController::class, 'getMail']);
-Route::get('/checkLogin/{mail}', [LoginController::class, 'checkLogin']);
-
-Route::post('/postUser', [LoginController::class, 'postUser']);
-
-//Route::get('/getPassword/{pass}', [FrontController::class, 'getPassword']);
-
-});
 
