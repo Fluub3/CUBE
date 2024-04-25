@@ -168,6 +168,7 @@ html, body {
 /* Styles existants pour les formulaires... (Ne pas changer cela) */
 
 /* Ajout de styles spécifiques à la page d'accueil */
+/* Styles pour la barre latérale */
 .sidebar {
     background-color: #333;
     color: #fff;
@@ -177,36 +178,30 @@ html, body {
     top: 0;
     left: 0;
     bottom: 0;
-    overflow-y: auto; /* Activer le défilement vertical */
+    overflow-y: auto;
 }
 
+/* Styles pour le contenu principal */
 
 
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-}
-
+/* Styles pour les éléments du menu */
 .menu-item {
     margin-bottom: 10px;
 }
 
+/* Styles pour les cartes */
 .card {
     background: #fff;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
-
 .card-body {
     padding: 20px;
     margin: 20px;
 }
 
-/* ... Styles pour responsive et autres éléments */
-
-/* Ajouter des styles réutilisables pour les boutons qui peuvent être utilisés partout */
+/* Styles pour les boutons */
 .button-primary {
     background-color: #005b96;
     color: white;
@@ -221,42 +216,121 @@ html, body {
     background-color: #00467f;
 }
 
-/* Utilisation des styles réutilisables pour les boutons des formulaires */
-.submit-button,
-.bouton-d-inscription button {
-    /* Appliquer le style .button-primary aux boutons de formulaire */
-    @extend .button-primary;
-}
-
-/* ... Plus de styles responsives au besoin */
-
+/* Styles pour le footer */
 .footer {
-    width: 100%; /* ajuster en fonction de la largeur de la sidebar */
+    width: 100%;
     position: fixed;
     bottom: 0;
-    /* ajuster en fonction de la largeur de la sidebar */
-    background-color: #003366; /* La couleur de fond du footer */
-    color: white; /* La couleur du texte dans le footer */
-    text-align: center; /* Centre le texte dans le footer */
-    padding: 10px 0; /* Ajoute un peu d'espace au-dessus et en dessous du texte */
-    z-index: 1000; /* Assure que le footer reste au-dessus des autres éléments */
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
-
-/* Style pour la carte */
+/* Styles pour les cartes */
 .cards {
-    background-color: #fff; /* Couleur de fond de la carte */
-    border-radius: 5px; /* Coins arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    padding: 20px; /* Espacement interne */
-    margin-bottom: 20px; /* Marge en bas */
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-/* Style pour la séparation */
+/* Styles pour la séparation entre les cartes */
 .cards + .cards {
-    border-top: 1px solid #ccc; /* Bordure en haut pour la séparation */
-    padding-top: 20px; /* Espacement interne en haut pour la séparation */
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
 }
+
+
+
+/* Media query pour les petits écrans */
+@media (max-width: 1000px) {
+    .sidebar {
+        background-color: #333;
+        color: #fff;
+        width: 100%;
+        height: 100%; /* Occupera toute la hauteur de l'écran */
+        padding: 20px;
+        position: fixed; /* Position fixe pour rester au-dessus de tous les autres éléments */
+        top: 0;
+        left: 0;
+        overflow-y: auto; /* Activer le défilement vertical si nécessaire */
+        z-index: 999; /* Assure que la barre latérale est au-dessus de tous les autres éléments */
+        text-align: center; /* Centrer le texte horizontalement */
+        font-size: 24px; /* Taille du texte agrandie */
+
+    }
+
+    .sidebar h2 {
+        margin-top: 50%; /* Décalage vers le haut de la moitié de la hauteur de la barre latérale */
+        transform: translateY(-50%); /* Alignement vertical du texte */
+    }
+    /* Styles pour l'icône de menu */
+    .menu-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        color: white;
+    }
+
+    .menu-icon {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+    }
+
+    .menu-icon::before {
+        top: -8px;
+    }
+
+    .menu-icon::after {
+        top: 8px;
+    }
+
+
+
+
+
+
+    .main-content {
+        padding: 20px;
+
+    }
+}
+
+@media (min-width: 1001px) {
+
+    .main-content {
+        padding: 20px;
+        margin-left: 250px;
+
+    }
+
+}
+
+/* Media query pour les écrans encore plus petits */
+@media (max-width: 480px) {
+    .button-primary {
+        padding: 10px;
+    }
+}
+
 
 
 .menuA {
