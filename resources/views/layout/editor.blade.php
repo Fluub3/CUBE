@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Éditeur Personnalisé</title>
-    <!-- Inclusion de votre feuille de style CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- Inclure une bibliothèque d'icônes, par exemple Font Awesome -->
-    <script src="https://cdn.tiny.cloud/1/cew72ljbtjkjbxfg29sq6tl3vzqbudslv5nwyme2ixdom1co/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+@extends('layout.nav_bar')
+@extends('layout.sidebar')
+@section('content')
     <script>
         tinymce.init({
             selector: 'textarea',
@@ -18,8 +11,9 @@
             height: 300,
         });
     </script>
-</head>
-<body>
+
+{{--</head>--}}
+{{--<body>--}}
 <div class="container">
     <form id="editor-form" method="post" action="/editor/save">
         @csrf
@@ -36,7 +30,7 @@
                 <select name="visibility" id="visibility" required>
                     <option value="0" selected>Public</option>
                     <option value="1">Privé</option>
-                    <option value="2">Non-repertorier</option>
+                    <option value="2">Non répertorié</option>
                 </select>
             </div>
 
@@ -50,7 +44,6 @@
 
 
 </div>
+@endsection
 
-<!-- Inclusion de votre script JavaScript -->
-</body>
-</html>
+

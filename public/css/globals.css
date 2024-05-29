@@ -1,30 +1,30 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-@import url("https://fonts.googleapis.com/css?family=Inter:400");
-* {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-}
-html,
-body {
-    margin: 0px;
+html, body {
+    margin: 0;
     height: 100%;
+    font-family: var(--text-regular); /* Utilisation de la police régulière */
 }
-/* a blue color as a generic focus style */
+
+/* Style de focus pour les boutons */
 button:focus-visible {
-    outline: 2px solid #4a90e2 !important;
-    outline: -webkit-focus-ring-color auto 5px !important;
+    outline: 2px solid var(--blue-focus) !important; /* Utilisation de la variable de couleur focus */
+    outline: -webkit-focus-ring-color auto 5px !important; /* Compatibilité avec les navigateurs WebKit */
 }
+
 a {
     text-decoration: none;
 }
+
+
+
+/* Utilisation des polices Marianne si disponibles */
 @font-face {
-    font-family: "Arial-Bold";
-    src: url("https://anima-uploads.s3.amazonaws.com/projects/653e91e15650ba167f907146/fonts/fontsfree-net-arial-bold.ttf")
-    format("truetype");
+    font-family: "Marianne";
+    src: url("https://gouvfr.cdn.mathjax.org/fonts/Marianne/woff2/marianne-regular-webfont.woff2") format("woff2"),
+    url("https://gouvfr.cdn.mathjax.org/fonts/Marianne/woff/marianne-regular-webfont.woff") format("woff");
 }
 
 @font-face {
-    font-family: "Arial-Regular";
-    src: url("https://anima-uploads.s3.amazonaws.com/projects/653a98e4fe9c72e81aaadc15/fonts/audiowide-regular.ttf")
-    format("truetype");
+    font-family: "Marianne-Bold";
+    src: url("https://gouvfr.cdn.mathjax.org/fonts/Marianne/woff2/marianne-bold-webfont.woff2") format("woff2"),
+    url("https://gouvfr.cdn.mathjax.org/fonts/Marianne/woff/marianne-bold-webfont.woff") format("woff");
 }

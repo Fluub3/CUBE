@@ -1,30 +1,54 @@
-/* Global Reset Styles */
+/* Variables DSFR pour les couleurs et la typographie */
+:root {
+    --blue-france: #000091;
+    --blue-france-light: #417dc1;
+    --blue-focus: #4a90e2; /* Couleur focus personnalisée, semblable à votre #4a90e2 */
+
+    --grey-800: #323232;
+    --grey-700: #404040;
+    --grey-100: #e5e5e5;
+    --grey-50: #f9f9f9;
+
+    --green-emeraude: #008577;
+    --green-emeraude-light: #42b5aa;
+
+    --text-regular: "Marianne", Arial, sans-serif; /* Marianne est la police principale du DSFR */
+    --text-bold: "Marianne-Bold", Arial, sans-serif; /* Si Marianne-Bold est disponible, sinon Arial Bold */
+    --text-sans: "Marianne", Arial, sans-serif;
+}
+
+/* Reset global */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    -webkit-font-smoothing: antialiased; /* Amélioration du rendu des polices sur écrans */
 }
 
+/* Styles généraux */
 html, body {
-    width: 100%;
-    height: 100%;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    font-family: var(--text-sans);
+    background-color: var(--grey-50);
+    color: var(--grey-800);
+    display: flex; /* Pour aligner les éléments */
+    flex-direction: column; /* Empiler verticalement */
+    min-height: 100vh; /* Assurer que le contenu occupe toute la hauteur de la fenêtre */
 }
 
-/* Header Styles */
+/* En-tête */
 .header {
-    background-color: #003366;
+    background-color: var(--blue-france);
     color: white;
-    width: 100%;
-    padding: 20px 0;
+    padding: 1rem 0; /* Espacement cohérent avec DSFR */
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+/* Conteneur principal */
+.main-content {
+    padding: 2rem;
+    flex: 1; /* Permet au contenu principal de prendre l'espace disponible */
 }
 
 /* Form Container Styles */
@@ -37,73 +61,33 @@ html, body {
 
 }
 
-/* Form Styles for Both Registration and Login */
+/* Formulaire */
 .form {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Ombre plus subtile */
 }
 
 .form-group {
-    margin: 10px;
-    padding: 0px;
+    margin-bottom: 1.5rem; /* Espacement plus aéré entre les groupes de formulaire */
 }
 
 .form-group label {
-    /* If you want the 'Sexe' label to appear like other labels, remove the 'display: block;' */
-    margin-bottom: 8px;
-    color: #333;
-    font-size: 16px;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
-/* Since you want the radio buttons next to each other, you don't want them to be 100% width */
 .form-group input[type="text"],
 .form-group input[type="password"],
 .form-group input[type="email"],
-.form-group input[type="date"],
-.form-group button {
+.form-group input[type="date"] {
     width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid var(--grey-100);
+    border-radius: 0.25rem;
 }
-
-/* Update your radio button specific styles here */
-.form-group.sexe {
-    display: flex; /* This will line up the child elements in a row */
-    align-items: center; /* This will vertically align them in the middle */
-    margin-bottom: 20px; /* Keep consistent spacing with other form elements */
-}
-
-/* Adjust label styles for inline display */
-.form-group.sexe label {
-    margin-right: 10px;
-    margin-left: 0;
-    /* You can adjust padding and margins as needed to align with the design */
-    padding: 5px 10px;
-    background-color: #f4f4f4;
-    border: 1px solid #d1d3d4;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* Hide the default radio input appearance */
-.form-group.sexe input[type="radio"] {
-    opacity: 0; /* Hiding the radio button but still accessible */
-    position: absolute; /* Remove from the flow so labels can be side by side */
-    width: 0; /* Remove width so it doesn't affect the layout */
-}
-
-/* Style for when the radio button is selected */
-.form-group.sexe input[type="radio"]:checked + label {
-    background-color: #005b96;
-    color: white;
-    border-color: #005b96;
-}
-
 
 /* Button Styles */
 .submit-button,
@@ -201,31 +185,27 @@ html, body {
     margin: 20px;
 }
 
-/* Styles pour les boutons */
+/* Boutons */
 .button-primary {
-    background-color: #005b96;
+    background-color: var(--blue-france);
     color: white;
-    padding: 15px;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
     border: none;
+    border-radius: 0.25rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease; /* Transition plus douce */
 }
 
 .button-primary:hover {
-    background-color: #00467f;
+    background-color: var(--blue-france-light);
 }
 
-/* Styles pour le footer */
+/* Pied de page */
 .footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    background-color: #003366;
+    background-color: var(--grey-700);
     color: white;
     text-align: center;
-    padding: 10px 0;
-    z-index: 1000;
+    padding: 1rem 0;
 }
 
 /* Styles pour les cartes */
@@ -339,4 +319,10 @@ html, body {
 
 a[href]:not(:visited) {
     text-decoration: none; /* Supprimez la soulignement par défaut */
+}
+
+/* Liens */
+.form-links a {
+    color: var(--blue-france);
+    text-decoration: underline;
 }

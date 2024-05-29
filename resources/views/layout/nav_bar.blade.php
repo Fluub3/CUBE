@@ -5,16 +5,23 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/commentaire.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/AddRessource.css.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+    <link rel="stylesheet" href="{{ asset('css/editor.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
+
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap-reboot.css') }}" /> <!-- Assurez-vous que ce chemin est correct -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/8c40c31b29.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/cew72ljbtjkjbxfg29sq6tl3vzqbudslv5nwyme2ixdom1co/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 
 
@@ -101,7 +108,6 @@
     </i>
 </div>
 <div class="sidebar d-none">
-
     <div class="menu-toggle" onclick="toggleSidebarClose()">
         <i class="fa-solid fa-xmark"></i>
 

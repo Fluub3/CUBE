@@ -1,0 +1,93 @@
+/* Variables DSFR */
+:root {
+    --blue-france: #000091;
+    --blue-france-light: #417dc1;
+    --grey-800: #323232;
+    --grey-700: #404040;
+    --grey-100: #e5e5e5;
+    --grey-50: #f9f9f9;
+    --text-regular: "Marianne", Arial, sans-serif;
+}
+
+/* Styles globaux */
+body {
+    font-family: var(--text-regular);
+    background-color: var(--grey-50);
+    color: var(--grey-800);
+}
+
+/* Carte des commentaires */
+.card {
+    margin-top: 1.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    background-color: var(--grey-100);
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+/* Formulaire d'ajout de commentaire */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--grey-100);
+    border-radius: 0.25rem;
+}
+
+.Submit {
+    background-color: var(--blue-france);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Submit:hover {
+    background-color: var(--blue-france-light);
+}
+
+[name=Delete]{
+    background-color: var(--red);
+
+}
+
+/* Commentaires */
+mb-3 {
+    margin-bottom: 1rem;
+}
+
+strong {
+    font-weight: bold;
+}
+
+textarea[name="contenu"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--grey-100);
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Réponses */
+ml-4 {
+    margin-left: 1.5rem;
+}

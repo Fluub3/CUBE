@@ -1,0 +1,106 @@
+/* Variables DSFR */
+:root {
+    /* Couleurs */
+    --blue-france: #000091;
+    --blue-france-light: #417dc1;
+    --green-emeraude: #008577;
+    --grey-800: #323232;
+    --grey-700: #404040;
+    --grey-100: #e5e5e5;
+    --grey-50: #f9f9f9;
+    --white: #fff;
+
+    /* Typographie */
+    --text-regular: "Marianne", Arial, sans-serif; /* Marianne est la police principale du DSFR */
+    --text-bold: "Marianne-Bold", Arial, sans-serif; /* Si Marianne-Bold est disponible, sinon Arial Bold */
+}
+
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+}
+
+/* Styles globaux */
+body {
+    font-family: var(--text-regular);
+    background-color: var(--grey-50);
+    color: var(--grey-800);
+    margin: 0;
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--text-bold);
+}
+
+/* Liens */
+a {
+    color: var(--blue-france);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--blue-france-light);
+}
+
+/* Boutons */
+.btn {
+    background-color: var(--blue-france);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem; /* Arrondi léger */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--blue-france-light);
+}
+
+.btn-secondary {
+    background-color: var(--grey-100);
+    color: var(--grey-800);
+}
+
+.btn-secondary:hover {
+    background-color: var(--grey-700);
+}
+
+/* Cartes */
+.card {
+    background-color: var(--white);
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: var(--grey-100);
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+/* Formulaires */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--grey-100);
+    border-radius: 0.25rem;
+}

@@ -52,7 +52,7 @@
                                     <label for="comment">Commentaire :</label>
                                     <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" class="Submit">Ajouter</button>
                             </form>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                         @csrf
                                         @method('PUT')
                                         <textarea name="contenu" rows="3">{{ $commentaire->Contenue }}</textarea>
-                                        <button type="submit">Modifier</button>
+                                        <button type="submit" class="Submit"> Modifier</button>
                                     </form>
 
                                     <!-- Formulaire de suppression -->
@@ -86,7 +86,7 @@
                                           style="display: inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
+                                        <button type="submit" class="Submit" name="Delete"
                                                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?')">
                                             Supprimer
                                         </button>

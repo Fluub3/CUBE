@@ -1,0 +1,96 @@
+/* Variables DSFR */
+:root {
+    --blue-france: #000091;
+    --blue-france-light: #417dc1;
+    --green-emeraude: #008577;
+    --grey-800: #323232;
+    --grey-700: #404040;
+    --grey-100: #e5e5e5;
+    --grey-50: #f9f9f9;
+    --white: #fff;
+    --text-regular: "Marianne", Arial, sans-serif;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styles globaux */
+body {
+    font-family: var(--text-regular);
+    background-color: var(--grey-50);
+    color: var(--grey-800);
+}
+
+/* Conteneur */
+.container {
+    max-width: 1200px; /* Largeur maximale du conteneur, ajustable selon vos besoins */
+    margin: 2rem auto; /* Centrage horizontal avec des marges verticales */
+    padding: 2rem; /* Espace intérieur pour le contenu */
+    background-color: var(--white); /* Fond blanc */
+    border-radius: 0.25rem; /* Coins légèrement arrondis */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Ombre subtile */
+}
+
+/* Formulaire */
+#editor-form {
+    display: flex; /* Permet un affichage en colonne */
+    flex-direction: column;
+}
+
+/* Éditeur */
+.editor-container {
+    border: 1px solid var(--grey-100); /* Bordure fine grise */
+    border-radius: 0.25rem;
+    padding: 1rem; /* Espace intérieur de l'éditeur */
+    margin-bottom: 1rem; /* Marge inférieure pour l'espacement */
+}
+
+/* Titre */
+.title-container,
+.visibility-container {
+    margin-bottom: 1rem; /* Espacement entre les éléments */
+}
+
+.title-container label,
+.visibility-container label {
+    display: block; /* Assure que le label est affiché sur sa propre ligne */
+    margin-bottom: 0.5rem; /* Espace entre le label et l'input */
+    font-weight: bold; /* Label en gras */
+}
+
+.title-container input[type="text"],
+.visibility-container select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--grey-100); /* Bordure fine grise */
+    border-radius: 0.25rem;
+}
+
+/* Bouton de soumission */
+#Envoyer {
+    background-color: var(--green-emeraude); /* Couleur de fond vert émeraude */
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition douce au survol */
+}
+
+#Envoyer:hover {
+    background-color: var(--green-emeraude-light); /* Couleur plus claire au survol */
+}
+
+/* Styles TinyMCE (pour personnaliser l'éditeur) */
+.tox .tox-toolbar__group {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--grey-100);
+}
+
+.tox .tox-tbtn svg {
+    fill: var(--grey-800); /* Couleur des icônes */
+}
